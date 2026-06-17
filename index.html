@@ -340,26 +340,27 @@
   .comm-table td:first-child { font-weight: 600; color: var(--off); width: 240px; }
 
   /* ── LIMITATIONS ── */
-  .limit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; width: 100%; flex: 1; min-height: 0; }
+  .limit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; flex: 1; min-height: 0; }
   .limit-card {
     background: var(--bg-card); border: 1px solid var(--dim);
-    border-radius: 8px; padding: 40px;
+    border-radius: 8px; padding: 22px 26px;
     border-top: 3px solid var(--red);
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .limit-card .lim-icon { font-size: 56px; margin-bottom: 20px; }
-  .limit-card h3 { font-size: 34px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
-  .limit-card p { font-size: 22px; color: var(--muted); line-height: 1.6; }
-  .limit-card .lim-tip { margin-top: auto; padding-top: 20px; font-size: 19px; font-weight: 600; color: var(--orange); letter-spacing: 0.05em; }
+  .limit-card .lim-header { display: flex; align-items: center; gap: 12px; }
+  .limit-card .lim-icon { font-size: 28px; flex-shrink: 0; }
+  .limit-card h3 { font-size: 29px; font-weight: 600; color: var(--white); line-height: 1.2; margin: 0; }
+  .limit-card p { font-size: 19px; color: var(--muted); line-height: 1.55; margin: 0; }
+  .limit-card .lim-tip { margin-top: auto; padding-top: 10px; font-size: 17px; font-weight: 600; color: var(--orange); letter-spacing: 0.03em; }
 
   /* ── ETHICS ── */
-  .ethics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; width: 100%; flex: 1; min-height: 0; }
+  .ethics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; flex: 1; min-height: 0; }
   .ethics-card {
-    background: var(--bg-card); border: 1px solid var(--dim); border-radius: 8px; padding: 40px 32px;
-    display: flex; flex-direction: column;
+    background: var(--bg-card); border: 1px solid var(--dim); border-radius: 8px; padding: 22px 26px;
+    display: flex; flex-direction: column; overflow: hidden;
   }
-  .ethics-card .eth-icon { font-size: 56px; margin-bottom: 20px; }
-  .ethics-card h3 { font-size: 32px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+  .ethics-card .eth-icon { font-size: 30px; margin-bottom: 10px; }
+  .ethics-card h3 { font-size: 34px; font-weight: 600; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
   .ethics-card p { font-size: 22px; color: var(--muted); line-height: 1.55; }
 
   /* ── PROMPT WHAT ── */
@@ -495,6 +496,7 @@
   .flex-col { display: flex; flex-direction: column; }
   .gap-16 { gap: 16px; }
 </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -593,8 +595,121 @@
       </div>
     </div>
 
+    <!-- ══ SLIDE: FASES DE MADUREZ IA ══ -->
+    <div class="slide slide-content" data-index="2" style="justify-content:flex-start">
+      <div class="slide-header">
+        <div class="slide-label">Contexto · ¿Dónde está tu organización?</div>
+        <h2>Fases de Madurez IA en una Empresa</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:column;gap:0;padding:20px 56px 0">
+
+        <!-- 5 columnas de fases -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;flex:1;min-height:0">
+
+          <!-- FASE 1 · Exploración -->
+          <div style="background:var(--bg-card);border:1px solid #3a3530;border-top:3px solid #6b7280;border-radius:6px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0">
+            <!-- chip -->
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(107,114,128,0.15);border:1px solid rgba(107,114,128,0.35);border-radius:20px;padding:3px 12px;width:fit-content;margin-bottom:14px">
+              <span style="font-size:13px;font-weight:700;color:#9ca3af;letter-spacing:0.18em;text-transform:uppercase">Fase 1</span>
+            </div>
+            <!-- título -->
+            <div style="font-size:30px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px">🔍 Exploración</div>
+            <!-- definición -->
+            <p style="font-size:17px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:0">La organización descubre la IA de forma espontánea e individual. No existe ninguna estructura, política ni guía formal que oriente su uso.</p>
+            <!-- divisor -->
+            <div style="height:1px;background:#3a3530;margin:18px 0"></div>
+            <!-- subtítulo -->
+            <div style="font-size:13px;font-weight:700;color:#9ca3af;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Señales de esta fase</div>
+            <!-- bullets -->
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#6b7280;flex-shrink:0;margin-top:1px">→</span>Algunos empleados usan ChatGPT por cuenta propia</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#6b7280;flex-shrink:0;margin-top:1px">→</span>No hay política ni guía oficial de uso</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#6b7280;flex-shrink:0;margin-top:1px">→</span>Los resultados son inconsistentes entre personas</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#6b7280;flex-shrink:0;margin-top:1px">→</span>Hay curiosidad pero también desconfianza o miedo</li>
+            </ul>
+          </div>
+
+          <!-- FASE 2 · Adopción -->
+          <div style="background:var(--bg-card);border:1px solid #3a3530;border-top:3px solid #d97706;border-radius:6px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(217,119,6,0.12);border:1px solid rgba(217,119,6,0.35);border-radius:20px;padding:3px 12px;width:fit-content;margin-bottom:14px">
+              <span style="font-size:13px;font-weight:700;color:#fbbf24;letter-spacing:0.18em;text-transform:uppercase">Fase 2</span>
+            </div>
+            <div style="font-size:30px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px">⚡ Adopción</div>
+            <p style="font-size:17px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:0">Los equipos incorporan la IA en su rutina diaria con entusiasmo, pero sin estándares ni coordinación institucional que unifique el uso.</p>
+            <div style="height:1px;background:#3a3530;margin:18px 0"></div>
+            <div style="font-size:13px;font-weight:700;color:#fbbf24;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Uso regular en equipos</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#d97706;flex-shrink:0;margin-top:1px">→</span>Los equipos adoptan la IA de forma voluntaria</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#d97706;flex-shrink:0;margin-top:1px">→</span>Se comparten prompts y trucos entre colegas</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#d97706;flex-shrink:0;margin-top:1px">→</span>Aparecen los primeros casos de éxito visibles</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#d97706;flex-shrink:0;margin-top:1px">→</span>Falta formalización y estándares comunes</li>
+            </ul>
+          </div>
+
+          <!-- FASE 3 · Integración -->
+          <div style="background:var(--bg-card);border:1px solid #3a3530;border-top:3px solid var(--orange);border-radius:6px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,84,40,0.12);border:1px solid rgba(200,84,40,0.4);border-radius:20px;padding:3px 12px;width:fit-content;margin-bottom:14px">
+              <span style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.18em;text-transform:uppercase">Fase 3</span>
+            </div>
+            <div style="font-size:30px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px">🔗 Integración</div>
+            <p style="font-size:17px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:0">La IA se conecta formalmente a los procesos de la empresa. Surgen guías corporativas, templates aprobados y primeras métricas de impacto medibles.</p>
+            <div style="height:1px;background:#3a3530;margin:18px 0"></div>
+            <div style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Procesos conectados con IA</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--orange);flex-shrink:0;margin-top:1px">→</span>Los flujos de trabajo se rediseñan con IA</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--orange);flex-shrink:0;margin-top:1px">→</span>Existen templates y guías corporativas de uso</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--orange);flex-shrink:0;margin-top:1px">→</span>Se miden indicadores de impacto y ahorro</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--orange);flex-shrink:0;margin-top:1px">→</span>La IA complementa y mejora los procesos actuales</li>
+            </ul>
+          </div>
+
+          <!-- FASE 4 · Optimización -->
+          <div style="background:var(--bg-card);border:1px solid #3a3530;border-top:3px solid #7c3aed;border-radius:6px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.4);border-radius:20px;padding:3px 12px;width:fit-content;margin-bottom:14px">
+              <span style="font-size:13px;font-weight:700;color:#a78bfa;letter-spacing:0.18em;text-transform:uppercase">Fase 4</span>
+            </div>
+            <div style="font-size:30px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px">📊 Optimización</div>
+            <p style="font-size:17px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:0">La IA impulsa decisiones estratégicas y genera una ventaja competitiva medible. Flujos automatizados y equipos nativos de IA operan de forma continua.</p>
+            <div style="height:1px;background:#3a3530;margin:18px 0"></div>
+            <div style="font-size:13px;font-weight:700;color:#a78bfa;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Ventaja competitiva medible</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#7c3aed;flex-shrink:0;margin-top:1px">→</span>La IA está embebida en la estrategia del negocio</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#7c3aed;flex-shrink:0;margin-top:1px">→</span>Los flujos automatizados funcionan de forma autónoma</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#7c3aed;flex-shrink:0;margin-top:1px">→</span>El equipo innova con IA como herramienta nativa</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#7c3aed;flex-shrink:0;margin-top:1px">→</span>La organización aprende y se adapta de forma continua</li>
+            </ul>
+          </div>
+
+          <!-- FASE 5 · Transformación -->
+          <div style="background:var(--bg-card);border:1px solid #3a3530;border-top:3px solid #059669;border-radius:6px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(5,150,105,0.12);border:1px solid rgba(5,150,105,0.4);border-radius:20px;padding:3px 12px;width:fit-content;margin-bottom:14px">
+              <span style="font-size:13px;font-weight:700;color:#34d399;letter-spacing:0.18em;text-transform:uppercase">Fase 5</span>
+            </div>
+            <div style="font-size:30px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px">🚀 Transformación</div>
+            <p style="font-size:17px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:0">La IA redefine el modelo de negocio completo. La organización lidera su sector, innova de forma continua y la IA es parte del ADN empresarial.</p>
+            <div style="height:1px;background:#3a3530;margin:18px 0"></div>
+            <div style="font-size:13px;font-weight:700;color:#34d399;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Reinvención del negocio</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#059669;flex-shrink:0;margin-top:1px">→</span>La IA genera nuevas líneas de producto o servicio</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#059669;flex-shrink:0;margin-top:1px">→</span>Los clientes perciben la diferencia competitiva</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#059669;flex-shrink:0;margin-top:1px">→</span>La empresa lidera su sector gracias a la IA</li>
+              <li style="font-size:17px;color:var(--off);line-height:1.5;display:flex;gap:10px;align-items:flex-start"><span style="color:#059669;flex-shrink:0;margin-top:1px">→</span>Se convierte en referente y atrae talento top</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Banner inferior -->
+        <div style="margin-top:20px;padding:14px 28px;background:rgba(200,84,40,0.1);border:1px solid rgba(200,84,40,0.3);border-radius:6px;display:flex;align-items:center;gap:14px;flex-shrink:0;margin-bottom:24px">
+          <span style="font-size:18px;flex-shrink:0">📍</span>
+          <p style="font-size:17px;color:var(--off);line-height:1.5;margin:0">La mayoría de empresas en latinoamérica están en <strong style="color:var(--white)">Fase 1–2</strong>. Este taller te da las herramientas para <strong style="color:var(--orange)">llegar a la Fase 2 y avanzar hacia la 3</strong>.</p>
+        </div>
+
+      </div>
+    </div>
+
     <!-- ══ SLIDE 3: LOGOS INTERACTIVO ══ -->
-    <div class="slide slide-logos" data-index="2">
+    <div class="slide slide-logos" data-index="3">
       <div class="logos-header">
         <div class="tag">Interactivo</div>
         <h2 style="margin-top:12px">¿Qué tanto hemos interactuado con IA?</h2>
@@ -846,8 +961,269 @@
       </div>
     </div>
 
+    <!-- ══ SLIDE: CÓMO FUNCIONA LA IA ══ -->
+    <div class="slide slide-content" data-index="7">
+      <div class="slide-header">
+        <div class="slide-label">Capítulo 01 · Fundamentos</div>
+        <h2>¿Cómo funciona la IA?</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:column;gap:0;padding:24px 72px 36px">
+
+        <!-- Flujo de 5 pasos -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr) ;gap:0;flex:1;min-height:0;align-items:stretch">
+
+          <!-- PASO 1: INPUT -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative">
+            <div style="flex:1;width:100%;background:var(--bg-card);border:1px solid var(--dim);border-right:none;border-radius:8px 0 0 8px;padding:32px 26px 28px;display:flex;flex-direction:column;gap:18px">
+              <div style="width:58px;height:58px;border-radius:50%;background:rgba(200,84,40,0.15);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--orange);flex-shrink:0">1</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Input</div>
+                <div style="font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:14px">✍️ El Prompt</div>
+                <p style="font-size:17px;color:var(--muted);line-height:1.65">Tú escribes una instrucción en lenguaje natural — una pregunta, una tarea, un pedido. Eso es el <strong style="color:var(--off)">prompt</strong>: la puerta de entrada a la IA.</p>
+              </div>
+              <div style="margin-top:auto;background:rgba(200,84,40,0.08);border:1px solid rgba(200,84,40,0.25);border-radius:6px;padding:16px 18px;font-size:20px;color:var(--off);line-height:1.6;font-style:italic">"Redacta un email formal para un cliente que nos pidió una cotización de instalación eléctrica."</div>
+            </div>
+          </div>
+
+          <!-- PASO 2: TOKENIZACIÓN -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative">
+            <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:18px solid var(--dim);z-index:2"></div>
+            <div style="flex:1;width:100%;background:var(--bg-card);border:1px solid var(--dim);border-right:none;border-left:none;padding:32px 26px 28px;display:flex;flex-direction:column;gap:18px">
+              <div style="width:58px;height:58px;border-radius:50%;background:rgba(90,158,114,0.12);border:2px solid #5a9e72;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#5a9e72;flex-shrink:0">2</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#5a9e72;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Tokenización</div>
+                <div style="font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:14px">🧩 Divide el texto</div>
+                <p style="font-size:17px;color:var(--muted);line-height:1.65">La IA no lee palabras — las rompe en <strong style="color:var(--off)">tokens</strong>: fragmentos mínimos de texto. Convierte tu instrucción en números que puede procesar.</p>
+              </div>
+              <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:7px;align-items:center">
+                <span style="background:rgba(90,158,114,0.15);border:1px solid rgba(90,158,114,0.35);border-radius:4px;padding:6px 13px;font-size:17px;color:#5a9e72;font-family:monospace">"Re"</span>
+                <span style="background:rgba(90,158,114,0.15);border:1px solid rgba(90,158,114,0.35);border-radius:4px;padding:6px 13px;font-size:17px;color:#5a9e72;font-family:monospace">"dacta"</span>
+                <span style="background:rgba(90,158,114,0.15);border:1px solid rgba(90,158,114,0.35);border-radius:4px;padding:6px 13px;font-size:17px;color:#5a9e72;font-family:monospace">"email"</span>
+                <span style="background:rgba(90,158,114,0.15);border:1px solid rgba(90,158,114,0.35);border-radius:4px;padding:6px 13px;font-size:17px;color:#5a9e72;font-family:monospace">"formal"</span>
+                <span style="font-size:15px;color:var(--muted)">→ números</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 3: BÚSQUEDA DE PATRONES -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative">
+            <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:18px solid var(--dim);z-index:2"></div>
+            <div style="flex:1;width:100%;background:var(--bg-card);border:1px solid var(--dim);border-right:none;border-left:none;padding:32px 26px 28px;display:flex;flex-direction:column;gap:18px">
+              <div style="width:58px;height:58px;border-radius:50%;background:rgba(124,58,237,0.12);border:2px solid #7c3aed;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#7c3aed;flex-shrink:0">3</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#7c3aed;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Entrenamiento</div>
+                <div style="font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:14px">🧠 Busca patrones</div>
+                <p style="font-size:17px;color:var(--muted);line-height:1.65">Consulta billones de patrones aprendidos en su entrenamiento. Reconoce el <strong style="color:var(--off)">contexto</strong>, el <strong style="color:var(--off)">tono</strong> y la <strong style="color:var(--off)">intención</strong> de tu instrucción.</p>
+              </div>
+              <div style="margin-top:auto;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);border-radius:6px;padding:16px 18px;font-size:20px;color:var(--off);line-height:1.6">Identifica: tono formal · audiencia (cliente) · tipo (email) · sector (eléctrico)</div>
+            </div>
+          </div>
+
+          <!-- PASO 4: CÁLCULO / PROBABILIDAD -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative">
+            <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:18px solid var(--dim);z-index:2"></div>
+            <div style="flex:1;width:100%;background:var(--bg-card);border:1px solid var(--dim);border-right:none;border-left:none;padding:32px 26px 28px;display:flex;flex-direction:column;gap:18px">
+              <div style="width:58px;height:58px;border-radius:50%;background:rgba(217,119,6,0.12);border:2px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#d97706;flex-shrink:0">4</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#d97706;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Probabilidad</div>
+                <div style="font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:14px">📊 Calcula la respuesta</div>
+                <p style="font-size:17px;color:var(--muted);line-height:1.65">No piensa — <strong style="color:var(--off)">predice la palabra más probable</strong> token a token. Cada pieza genera la siguiente según probabilidades estadísticas aprendidas.</p>
+              </div>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:18px;color:#d97706;font-weight:700">75% "Estimado"</span>
+                  <div style="height:10px;border-radius:4px;background:#d97706;width:75%"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:18px;color:var(--muted)">18% "Apreciado"</span>
+                  <div style="height:10px;border-radius:4px;background:var(--dim);width:18%"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:18px;color:var(--muted)">7% "Hola"</span>
+                  <div style="height:10px;border-radius:4px;background:var(--dim);width:7%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 5: OUTPUT -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative">
+            <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:18px solid var(--dim);z-index:2"></div>
+            <div style="flex:1;width:100%;background:var(--bg-card);border:1px solid var(--dim);border-radius:0 8px 8px 0;padding:32px 26px 28px;display:flex;flex-direction:column;gap:18px">
+              <div style="width:58px;height:58px;border-radius:50%;background:rgba(200,84,40,0.15);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--orange);flex-shrink:0">5</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Output</div>
+                <div style="font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:14px">💬 La respuesta</div>
+                <p style="font-size:17px;color:var(--muted);line-height:1.65">La IA entrega el texto generado en tiempo real. Lo que ves en pantalla es el resultado de millones de cálculos de probabilidad ejecutados en segundos.</p>
+              </div>
+              <div style="margin-top:auto;background:rgba(200,84,40,0.08);border:1px solid rgba(200,84,40,0.25);border-radius:6px;padding:16px 18px;font-size:20px;color:var(--off);line-height:1.6;font-style:italic">"Estimado cliente, nos complace presentarle nuestra propuesta de instalación eléctrica..."</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner inferior -->
+        <div style="margin-top:20px;padding:16px 28px;background:rgba(200,84,40,0.08);border:1px solid rgba(200,84,40,0.25);border-radius:6px;display:flex;align-items:center;gap:14px;flex-shrink:0">
+          <span style="font-size:22px;flex-shrink:0">💡</span>
+          <p style="font-size:18px;color:var(--off);line-height:1.5;margin:0">La IA <strong style="color:var(--white)">no entiende</strong> el texto como tú — trabaja con probabilidades estadísticas. Por eso el <strong style="color:var(--orange)">cómo escribes el prompt importa tanto</strong>: define qué patrones activa y qué respuesta calcula.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ SLIDE: CONTEXTO + PROBABILIDAD ══ -->
+    <div class="slide slide-content" data-index="7b">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;gap:0;padding:44px 72px 36px;box-sizing:border-box">
+
+        <!-- Header -->
+        <div style="flex-shrink:0;margin-bottom:28px">
+          <div style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">Capítulo 01 · Fundamentos</div>
+          <h1 style="font-size:56px;font-weight:800;color:var(--white);line-height:1.05;margin:0">Más contexto en el prompt →<br><span style="color:var(--orange)">respuesta más precisa.</span> Siempre.</h1>
+        </div>
+
+        <!-- 3 columnas: los 3 niveles de contexto -->
+        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;min-height:0">
+
+          <!-- NIVEL 1: Sin contexto -->
+          <div id="ctx-col-0" class="ctx-col" style="display:flex;flex-direction:column;gap:14px;cursor:pointer;opacity:1" onclick="ctxSelect(0)">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:10px;height:10px;border-radius:50%;background:#B84040;flex-shrink:0"></div>
+              <div style="font-size:13px;font-weight:700;color:#B84040;letter-spacing:0.15em;text-transform:uppercase">Sin contexto</div>
+            </div>
+            <!-- Prompt -->
+            <div style="background:var(--bg-card);border:2px solid #B84040;border-radius:10px;padding:20px 22px;flex-shrink:0">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.1em">Prompt</div>
+              <div style="font-size:19px;color:var(--off);line-height:1.55">"Redacta un email."</div>
+            </div>
+            <!-- Barras dispersas -->
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:10px;padding:20px 22px;flex:1">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.1em">¿Qué respuesta calcular?</div>
+              <div style="display:flex;flex-direction:column;gap:10px" id="bars-0"></div>
+              <div style="margin-top:16px;font-size:17px;color:#B84040;line-height:1.5;font-style:italic">La IA no sabe qué tipo de email, para quién ni con qué fin. Las opciones están casi empatadas.</div>
+            </div>
+            <!-- Output -->
+            <div style="background:rgba(184,64,64,0.07);border:1px solid rgba(184,64,64,0.25);border-radius:8px;padding:16px 18px;flex-shrink:0">
+              <div style="font-size:12px;color:#B84040;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Respuesta generada</div>
+              <div style="font-size:19px;color:var(--muted);line-height:1.55;font-style:italic">"Hola, espero que estés bien. Te escribo para comentarte algo importante…"</div>
+            </div>
+          </div>
+
+          <!-- NIVEL 2: Algo de contexto -->
+          <div id="ctx-col-1" class="ctx-col" style="display:flex;flex-direction:column;gap:14px;cursor:pointer;opacity:0.55" onclick="ctxSelect(1)">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:10px;height:10px;border-radius:50%;background:#d97706;flex-shrink:0"></div>
+              <div style="font-size:13px;font-weight:700;color:#d97706;letter-spacing:0.15em;text-transform:uppercase">Algo de contexto</div>
+            </div>
+            <div style="background:var(--bg-card);border:2px solid #d97706;border-radius:10px;padding:20px 22px;flex-shrink:0">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.1em">Prompt</div>
+              <div style="font-size:19px;color:var(--off);line-height:1.55">"Redacta un email formal para un cliente."</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:10px;padding:20px 22px;flex:1">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.1em">¿Qué respuesta calcular?</div>
+              <div style="display:flex;flex-direction:column;gap:10px" id="bars-1"></div>
+              <div style="margin-top:16px;font-size:17px;color:#d97706;line-height:1.5;font-style:italic">Sabe que es formal y para un cliente, pero ignora el tema. Hay una opción líder pero con incertidumbre.</div>
+            </div>
+            <div style="background:rgba(217,119,6,0.07);border:1px solid rgba(217,119,6,0.25);border-radius:8px;padding:16px 18px;flex-shrink:0">
+              <div style="font-size:12px;color:#d97706;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Respuesta generada</div>
+              <div style="font-size:19px;color:var(--muted);line-height:1.55;font-style:italic">"Estimado cliente, nos ponemos en contacto para informarle sobre nuestros servicios…"</div>
+            </div>
+          </div>
+
+          <!-- NIVEL 3: Contexto rico -->
+          <div id="ctx-col-2" class="ctx-col" style="display:flex;flex-direction:column;gap:14px;cursor:pointer;opacity:0.55" onclick="ctxSelect(2)">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:10px;height:10px;border-radius:50%;background:#5a9e72;flex-shrink:0"></div>
+              <div style="font-size:13px;font-weight:700;color:#5a9e72;letter-spacing:0.15em;text-transform:uppercase">Contexto rico</div>
+            </div>
+            <div style="background:var(--bg-card);border:2px solid #5a9e72;border-radius:10px;padding:20px 22px;flex-shrink:0">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.1em">Prompt</div>
+              <div style="font-size:19px;color:var(--off);line-height:1.55">"Eres asesor de DCI Ingenieros. Redacta un email formal para un cliente que solicitó cotización de instalación eléctrica residencial."</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:10px;padding:20px 22px;flex:1">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.1em">¿Qué respuesta calcular?</div>
+              <div style="display:flex;flex-direction:column;gap:10px" id="bars-2"></div>
+              <div style="margin-top:16px;font-size:17px;color:#5a9e72;line-height:1.5;font-style:italic">Con contexto claro, la IA calcula con alta confianza la respuesta correcta. Una opción domina.</div>
+            </div>
+            <div style="background:rgba(90,158,114,0.07);border:1px solid rgba(90,158,114,0.3);border-radius:8px;padding:16px 18px;flex-shrink:0">
+              <div style="font-size:12px;color:#5a9e72;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Respuesta generada</div>
+              <div style="font-size:19px;color:var(--off);line-height:1.55;font-style:italic">"Estimado cliente, adjunto la cotización para la instalación eléctrica residencial solicitada. Incluye materiales, mano de obra certificada y garantía…"</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Instrucción -->
+        <div style="margin-top:16px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:14px 24px;background:rgba(200,84,40,0.06);border:1px solid rgba(200,84,40,0.18);border-radius:8px">
+          <span style="font-size:20px">👆</span>
+          <p style="font-size:19px;color:var(--muted);margin:0;line-height:1.4">Haz clic en cada columna para comparar. <strong style="color:var(--off)">Más contexto = distribución más concentrada = respuesta más precisa.</strong></p>
+        </div>
+
+      </div>
+
+      <script>
+      (function(){
+        var data = [
+          // sin contexto — distribución plana
+          [
+            { label: "Email de seguimiento", pct: 26, color: "#B84040" },
+            { label: "Presentación de servicios", pct: 24, color: "#7A7068" },
+            { label: "Respuesta a consulta", pct: 22, color: "#7A7068" },
+            { label: "Confirmación de reunión", pct: 18, color: "#7A7068" },
+            { label: "Otro tipo de email", pct: 10, color: "#3A3530" }
+          ],
+          // algo de contexto — empieza a concentrarse
+          [
+            { label: "Presentación de servicios", pct: 48, color: "#d97706" },
+            { label: "Respuesta a consulta", pct: 27, color: "#7A7068" },
+            { label: "Email de seguimiento", pct: 15, color: "#7A7068" },
+            { label: "Propuesta comercial", pct: 10, color: "#3A3530" }
+          ],
+          // contexto rico — muy concentrado
+          [
+            { label: "Cotización eléctrica residencial", pct: 89, color: "#5a9e72" },
+            { label: "Propuesta técnica general", pct: 7, color: "#7A7068" },
+            { label: "Otro", pct: 4, color: "#3A3530" }
+          ]
+        ];
+
+        function renderBars(containerId, bars, animate) {
+          var c = document.getElementById(containerId);
+          c.innerHTML = '';
+          bars.forEach(function(b, i) {
+            var wrap = document.createElement('div');
+            wrap.style.cssText = 'display:flex;flex-direction:column;gap:4px';
+            var lbl = document.createElement('div');
+            lbl.style.cssText = 'display:flex;justify-content:space-between;font-size:17px';
+            var isTop = i === 0;
+            lbl.innerHTML = '<span style="color:' + (isTop ? b.color : 'var(--muted)') + ';font-weight:' + (isTop ? '700' : '400') + '">' + b.label + '</span><span style="color:' + (isTop ? b.color : 'var(--muted)') + ';font-weight:' + (isTop ? '700' : '400') + '">' + b.pct + '%</span>';
+            var track = document.createElement('div');
+            track.style.cssText = 'height:10px;border-radius:5px;background:var(--bg-raised);overflow:hidden';
+            var fill = document.createElement('div');
+            fill.style.cssText = 'height:100%;border-radius:5px;background:' + b.color + ';width:0;transition:width 0.7s cubic-bezier(0.4,0,0.2,1)';
+            track.appendChild(fill);
+            wrap.appendChild(lbl);
+            wrap.appendChild(track);
+            c.appendChild(wrap);
+            setTimeout(function(){ fill.style.width = b.pct + '%'; }, animate ? 60 + i * 80 : 0);
+          });
+        }
+
+        window.ctxSelect = function(idx) {
+          [0,1,2].forEach(function(i) {
+            document.getElementById('ctx-col-' + i).style.opacity = i === idx ? '1' : '0.45';
+          });
+        };
+
+        // render all bars immediately
+        renderBars('bars-0', data[0], true);
+        setTimeout(function(){ renderBars('bars-1', data[1], true); }, 150);
+        setTimeout(function(){ renderBars('bars-2', data[2], true); }, 300);
+      })();
+      </script>
+    </div>
+
     <!-- ══ SLIDE 8: CHAPTER - IA GENERATIVA ══ -->
-    <div class="slide slide-chapter" data-index="7" style="justify-content:center">
+    <div class="slide slide-chapter" data-index="8" style="justify-content:center">
       <div class="chapter-num">04</div>
       <div class="chapter-content" style="padding:0">
         <div class="chapter-label">Capítulo 04</div>
@@ -970,8 +1346,84 @@
       </div>
     </div>
 
+    <!-- ══ SLIDE: GOOGLE VS IA ══ -->
+    <div class="slide slide-content" data-index="11">
+      <div class="slide-header">
+        <div class="slide-label">Concepto · ¿Cómo es diferente a lo que ya conoces?</div>
+        <h2>Google vs Inteligencia Artificial</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:column;gap:20px;padding:28px 80px 36px">
+
+        <!-- Fila superior: dos columnas comparativas -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;min-height:0">
+
+          <!-- GOOGLE -->
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px 0 0 8px;border-right:none;padding:36px 40px;display:flex;flex-direction:column;gap:22px">
+            <!-- header -->
+            <div style="display:flex;align-items:center;gap:18px;padding-bottom:22px;border-bottom:2px solid rgba(66,133,244,0.4)">
+              <div style="width:56px;height:56px;border-radius:14px;background:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:32px">🔍</div>
+              <div>
+                <div style="font-size:34px;font-weight:700;color:var(--white)">Google</div>
+                <div style="font-size:15px;color:#4285f4;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-top:4px">Motor de búsqueda</div>
+              </div>
+            </div>
+            <!-- definición -->
+            <p style="font-size:20px;color:var(--muted);font-style:italic;line-height:1.65">Te muestra <strong style="color:var(--white);font-style:normal">dónde encontrar</strong> la información — te devuelve enlaces a páginas que otros han escrito. Tú eres quien lee, filtra, interpreta y decide qué hacer con ella.</p>
+            <!-- divisor subtítulo -->
+            <div style="font-size:13px;font-weight:700;color:#4285f4;letter-spacing:0.2em;text-transform:uppercase">¿Cómo funciona?</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:13px">
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:#4285f4;flex-shrink:0;margin-top:2px">→</span>Indexa millones de páginas web existentes</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:#4285f4;flex-shrink:0;margin-top:2px">→</span>Te devuelve links ordenados por relevancia</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:#4285f4;flex-shrink:0;margin-top:2px">→</span>La respuesta siempre viene de otra persona o fuente</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:#4285f4;flex-shrink:0;margin-top:2px">→</span>No adapta ni procesa el contenido para ti</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:#4285f4;flex-shrink:0;margin-top:2px">→</span>Depende de que alguien ya haya publicado la respuesta</li>
+            </ul>
+          </div>
+
+          <!-- IA -->
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:0 8px 8px 0;border-top:none;border-left:2px solid var(--orange);padding:36px 40px;display:flex;flex-direction:column;gap:22px;position:relative">
+            <!-- badge -->
+            <div style="position:absolute;top:22px;right:22px;background:rgba(200,84,40,0.15);border:1px solid rgba(200,84,40,0.4);border-radius:4px;padding:5px 12px;font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase">Nuevo paradigma</div>
+            <!-- header -->
+            <div style="display:flex;align-items:center;gap:18px;padding-bottom:22px;border-bottom:2px solid rgba(200,84,40,0.4)">
+              <div style="width:56px;height:56px;border-radius:14px;background:rgba(200,84,40,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:32px">🤖</div>
+              <div>
+                <div style="font-size:34px;font-weight:700;color:var(--white)">Inteligencia Artificial</div>
+                <div style="font-size:15px;color:var(--orange);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-top:4px">Asistente que razona y genera</div>
+              </div>
+            </div>
+            <!-- definición -->
+            <p style="font-size:20px;color:var(--muted);font-style:italic;line-height:1.65">No busca — <strong style="color:var(--white);font-style:normal">comprende tu situación y construye una respuesta</strong> original adaptada exactamente a lo que necesitas, con tu contexto y tus restricciones.</p>
+            <!-- divisor subtítulo -->
+            <div style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">¿Cómo funciona?</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:13px">
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);flex-shrink:0;margin-top:2px">→</span>Genera respuestas únicas según tu contexto específico</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);flex-shrink:0;margin-top:2px">→</span>Razona, redacta, analiza y toma decisiones contigo</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);flex-shrink:0;margin-top:2px">→</span>La respuesta no existía antes — la crea en el momento</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);flex-shrink:0;margin-top:2px">→</span>Procesa instrucciones en lenguaje natural, como con una persona</li>
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);flex-shrink:0;margin-top:2px">→</span>Recuerda el hilo de la conversación y se adapta</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Fila inferior: analogía clave -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex-shrink:0">
+          <div style="background:rgba(66,133,244,0.07);border:1px solid rgba(66,133,244,0.2);border-radius:6px;padding:18px 28px;display:flex;align-items:center;gap:16px">
+            <span style="font-size:26px;flex-shrink:0">📚</span>
+            <p style="font-size:18px;color:var(--off);line-height:1.5;margin:0"><strong style="color:var(--white)">Google</strong> es como ir a la biblioteca — te indica en qué estante está el libro. Tú lo buscas, lo lees y sacas tus conclusiones.</p>
+          </div>
+          <div style="background:rgba(200,84,40,0.08);border:1px solid rgba(200,84,40,0.25);border-radius:6px;padding:18px 28px;display:flex;align-items:center;gap:16px">
+            <span style="font-size:26px;flex-shrink:0">🧠</span>
+            <p style="font-size:18px;color:var(--off);line-height:1.5;margin:0"><strong style="color:var(--white)">La IA</strong> es como tener un experto al lado — le explicas tu situación y te da la respuesta ya procesada, lista para usar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- ══ SLIDE 12: CHAPTER - LIMITACIONES ══ -->
-    <div class="slide slide-chapter" data-index="11" style="justify-content:center">
+    <div class="slide slide-chapter" data-index="12" style="justify-content:center">
       <div class="chapter-num">06</div>
       <div class="chapter-content" style="padding:0">
         <div class="chapter-label">Capítulo 06</div>
@@ -1030,41 +1482,41 @@
 
     <!-- ══ SLIDE 15: ÉTICA ══ -->
     <div class="slide slide-content" data-index="14">
-      <div class="slide-header">
+      <div class="slide-header" style="padding:32px 100px 24px">
         <div class="slide-label">Capítulo 07 · Ética</div>
-        <h2>Principios para usar IA responsablemente</h2>
+        <h2>Usar IA con responsabilidad, lo que nadie puede delegar.</h2>
       </div>
-      <div class="slide-body" style="align-items:center">
+      <div class="slide-body" style="align-items:center;padding:28px 100px">
         <div class="ethics-grid">
           <div class="ethics-card">
-            <div class="eth-icon">🔒</div>
-            <h3>Privacidad de datos</h3>
-            <p>No compartas información confidencial de clientes, contratos o estrategias con IA pública. Lo que escribes puede usarse para entrenar modelos. Usa herramientas con políticas claras de privacidad.</p>
-          </div>
-          <div class="ethics-card">
-            <div class="eth-icon">✍️</div>
-            <h3>Transparencia y autoría</h3>
+            <div class="eth-icon">🔍</div>
+            <h3>Sé transparente sobre lo que usas IA</h3>
             <p>Si usas IA para generar un documento importante, considéralo una herramienta, no el autor. Tú eres responsable del contenido final. Revísalo, adáptalo y asegúrate de que refleja tu juicio.</p>
           </div>
           <div class="ethics-card">
-            <div class="eth-icon">✅</div>
-            <h3>Verificación de información</h3>
-            <p>Nunca publiques, envíes o uses datos generados por IA sin verificarlos. Una estadística inventada en un reporte puede dañar decisiones reales y la credibilidad de la empresa.</p>
-          </div>
-          <div class="ethics-card">
-            <div class="eth-icon">🤝</div>
-            <h3>Impacto en el equipo</h3>
-            <p>Usa IA para amplificar lo que tú y tu equipo hacen, no para saltarse procesos o excluir personas. La automatización debe liberar tiempo para trabajo de mayor valor, no generar exclusión.</p>
-          </div>
-          <div class="ethics-card">
-            <div class="eth-icon">🌍</div>
-            <h3>Sesgo y equidad</h3>
+            <div class="eth-icon">⚖️</div>
+            <h3>Revisa el sesgo en las respuestas</h3>
             <p>Ten cuidado al usar IA para decisiones sobre personas (contratación, evaluación, servicio al cliente). Los sesgos del modelo pueden amplificar inequidades existentes sin que te des cuenta.</p>
           </div>
           <div class="ethics-card">
+            <div class="eth-icon">🧠</div>
+            <h3>El humano siempre decide lo importante</h3>
+            <p>Nunca publiques, envíes o uses datos generados por IA sin verificarlos. Una estadística inventada en un reporte puede dañar decisiones reales y la credibilidad de la empresa.</p>
+          </div>
+          <div class="ethics-card">
+            <div class="eth-icon">🔐</div>
+            <h3>Protege los datos de tu organización</h3>
+            <p>No compartas información confidencial de clientes, contratos o estrategias con IA pública. Lo que escribes puede usarse para entrenar modelos. Usa herramientas con políticas claras de privacidad.</p>
+          </div>
+          <div class="ethics-card">
             <div class="eth-icon">📋</div>
-            <h3>Cumplimiento legal</h3>
+            <h3>Cumple las reglas de tu industria</h3>
             <p>Diferentes países tienen reglas sobre el uso de IA. En Europa ya existe la AI Act. Antes de automatizar procesos críticos con clientes, consulta con tu área legal o dirección.</p>
+          </div>
+          <div class="ethics-card">
+            <div class="eth-icon">🌱</div>
+            <h3>Habla con tu equipo abiertamente</h3>
+            <p>Usa IA para amplificar lo que tú y tu equipo hacen, no para saltarse procesos o excluir personas. La automatización debe liberar tiempo para trabajo de mayor valor, no generar exclusión.</p>
           </div>
         </div>
       </div>
@@ -1079,31 +1531,179 @@
       <div class="slide-body" style="align-items:center">
         <div class="limit-grid">
           <div class="limit-card" style="border-top-color:var(--red)">
-            <div class="lim-icon">🚫</div>
-            <h3>Datos personales de clientes</h3>
-            <p>Nombres completos, RUTs, correos, teléfonos, direcciones o cualquier información que identifique a una persona. Viola normativas de protección de datos (GDPR, Ley 19.628 en Chile).</p>
-            <div class="lim-tip">✗ No: "Analiza esta lista de clientes con sus RUTs y correos"</div>
+            <div class="lim-header">
+              <div class="lim-icon">📐</div>
+              <h3>Planos y diseños técnicos</h3>
+            </div>
+            <p>Planos eléctricos, memorias de cálculo, diseños de instalaciones industriales o residenciales. Son propiedad intelectual de la empresa y pueden revelar metodologías exclusivas y ventajas competitivas.</p>
+            <div class="lim-tip">✗ No: "Revisa este plano eléctrico y sugiere mejoras" — subiendo el archivo a una IA pública</div>
           </div>
           <div class="limit-card" style="border-top-color:var(--red)">
-            <div class="lim-icon">📄</div>
-            <h3>Contratos y documentos legales</h3>
-            <p>Contratos con cláusulas confidenciales, acuerdos de NDA, términos comerciales con proveedores o condiciones que no son públicas. Pueden ser indexados y reutilizados.</p>
-            <div class="lim-tip">✗ No: pegar el contrato completo para que "lo resuma"</div>
+            <div class="lim-header">
+              <div class="lim-icon">🏛️</div>
+              <h3>Contratos con entidades públicas</h3>
+            </div>
+            <p>Licitaciones adjudicadas, contratos con municipios, servicios u otras entidades del Estado. Contienen montos, condiciones, plazos y cláusulas que pueden ser confidenciales o estar sujetos a regulación.</p>
+            <div class="lim-tip">✗ No: "Resume este contrato con la municipalidad e identifica riesgos"</div>
           </div>
           <div class="limit-card" style="border-top-color:var(--red)">
-            <div class="lim-icon">💰</div>
-            <h3>Información financiera interna</h3>
-            <p>Balances, márgenes, proyecciones de ventas, salarios, presupuestos o cualquier dato que le daría ventaja a un competidor si lo conociera.</p>
-            <div class="lim-tip">✗ No: "Aquí están nuestros números de Q3, ¿cómo los presento?"</div>
+            <div class="lim-header">
+              <div class="lim-icon">🔧</div>
+              <h3>Especificaciones de proyectos en curso</h3>
+            </div>
+            <p>Presupuestos detallados, propuestas técnicas, cotizaciones a clientes o alcances de obra. Divulgarlos puede comprometer negociaciones activas y exponer la estrategia comercial de la empresa.</p>
+            <div class="lim-tip">✗ No: "Optimiza esta propuesta técnica" — pegando el documento completo</div>
+          </div>
+          <div class="limit-card" style="border-top-color:var(--red)">
+            <div class="lim-header">
+              <div class="lim-icon">👤</div>
+              <h3>Datos reales de clientes</h3>
+            </div>
+            <p>Nombres, RUTs, correos, teléfonos, direcciones o cualquier dato que identifique a una persona. Ingresar esta información en IA pública viola la Ley 19.628 en Chile y normativas internacionales como el GDPR.</p>
+            <div class="lim-tip">✗ No: "Analiza esta base de clientes con sus datos de contacto"</div>
+          </div>
+          <div class="limit-card" style="border-top-color:var(--red)">
+            <div class="lim-header">
+              <div class="lim-icon">💰</div>
+              <h3>Información financiera y legal confidencial</h3>
+            </div>
+            <p>Balances internos, márgenes de utilidad, salarios, acuerdos con socios, NDAs o estrategias de negocio. Exponerlos puede generar consecuencias legales y ventajas para la competencia.</p>
+            <div class="lim-tip">✗ No: "Aquí están nuestras utilidades del año, ¿cómo las presento?"</div>
           </div>
           <div class="limit-card" style="border-top-color:var(--orange)">
-            <div class="lim-icon">✅</div>
-            <h3>Cómo usarla de forma segura</h3>
-            <p>Trabaja con datos anonimizados o ficticios. Usa versiones enterprise con contratos de privacidad (ChatGPT Team, Claude for Work, Copilot M365). Nunca actives el historial si compartes datos sensibles.</p>
-            <div class="lim-tip" style="color:var(--green)">✓ Sí: usar ejemplos genéricos y pedir a TI una cuenta corporativa</div>
+            <div class="lim-header">
+              <div class="lim-icon">✅</div>
+              <h3>Cómo usarla de forma segura</h3>
+            </div>
+            <p>Trabaja con versiones anonimizadas o casos genéricos. Para proyectos reales usa herramientas enterprise con contrato de privacidad (ChatGPT Team, Claude for Work). Nunca subas archivos originales a versiones gratuitas.</p>
+            <div class="lim-tip" style="color:var(--green)">✓ Sí: describir el problema en términos generales, sin adjuntar documentos internos</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- ══ SLIDE: REFLEXIÓN GRUPAL - DATOS DCI ══ -->
+    <div class="slide slide-content" data-index="15b" style="background:var(--bg)">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;padding:52px 100px 44px;box-sizing:border-box;gap:0">
+
+        <!-- Header -->
+        <div style="flex-shrink:0;margin-bottom:36px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="font-size:40px">🌩️</span>
+              <h1 style="font-size:52px;font-weight:800;color:var(--white);line-height:1.05;margin:0">¿Qué datos de DCI nunca deberían<br>entrar a una IA pública?</h1>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:var(--bg-card);border:1px solid var(--dim);border-radius:20px;padding:8px 18px;flex-shrink:0">
+              <span style="font-size:16px">💬</span>
+              <span style="font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase">Reflexión grupal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla interactiva -->
+        <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-height:0">
+
+          <!-- Encabezado columnas -->
+          <div style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;padding:0 0 4px">
+            <div></div>
+            <div style="text-align:center;font-size:14px;font-weight:700;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase">No ingresar</div>
+            <div style="text-align:center;font-size:14px;font-weight:700;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase">Puede usarse</div>
+            <div style="text-align:center;font-size:14px;font-weight:700;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase">Revelar</div>
+          </div>
+
+          <!-- Filas -->
+          <div id="ref-row-0" style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;align-items:center">
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px;padding:18px 24px;font-size:21px;color:var(--off)">Contratos de obra con valores y condiciones</div>
+            <div id="ref-no-0"  style="height:60px;border-radius:8px;background:rgba(184,64,64,0.12);border:1px solid rgba(184,64,64,0.3);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(184,64,64,0.35);transition:all 0.4s">🚫 NO</div>
+            <div id="ref-si-0"  style="height:60px;border-radius:8px;background:rgba(90,158,114,0.1);border:1px solid rgba(90,158,114,0.25);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(90,158,114,0.3);transition:all 0.4s">✅ SÍ</div>
+            <button onclick="refReveal(0,'no')" style="height:60px;border-radius:8px;background:var(--bg-raised);border:1px solid var(--dim);font-size:26px;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">?</button>
+          </div>
+
+          <div id="ref-row-1" style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;align-items:center">
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px;padding:18px 24px;font-size:21px;color:var(--off)">Consultas técnicas de normativa (sin datos internos)</div>
+            <div id="ref-no-1"  style="height:60px;border-radius:8px;background:rgba(184,64,64,0.12);border:1px solid rgba(184,64,64,0.3);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(184,64,64,0.35);transition:all 0.4s">🚫 NO</div>
+            <div id="ref-si-1"  style="height:60px;border-radius:8px;background:rgba(90,158,114,0.1);border:1px solid rgba(90,158,114,0.25);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(90,158,114,0.3);transition:all 0.4s">✅ SÍ</div>
+            <button onclick="refReveal(1,'si')" style="height:60px;border-radius:8px;background:var(--bg-raised);border:1px solid var(--dim);font-size:26px;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">?</button>
+          </div>
+
+          <div id="ref-row-2" style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;align-items:center">
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px;padding:18px 24px;font-size:21px;color:var(--off)">Datos de clientes: nombre, NIT, correo</div>
+            <div id="ref-no-2"  style="height:60px;border-radius:8px;background:rgba(184,64,64,0.12);border:1px solid rgba(184,64,64,0.3);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(184,64,64,0.35);transition:all 0.4s">🚫 NO</div>
+            <div id="ref-si-2"  style="height:60px;border-radius:8px;background:rgba(90,158,114,0.1);border:1px solid rgba(90,158,114,0.25);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(90,158,114,0.3);transition:all 0.4s">✅ SÍ</div>
+            <button onclick="refReveal(2,'no')" style="height:60px;border-radius:8px;background:var(--bg-raised);border:1px solid var(--dim);font-size:26px;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">?</button>
+          </div>
+
+          <div id="ref-row-3" style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;align-items:center">
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px;padding:18px 24px;font-size:21px;color:var(--off)">Borradores de informes técnicos sin datos reales</div>
+            <div id="ref-no-3"  style="height:60px;border-radius:8px;background:rgba(184,64,64,0.12);border:1px solid rgba(184,64,64,0.3);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(184,64,64,0.35);transition:all 0.4s">🚫 NO</div>
+            <div id="ref-si-3"  style="height:60px;border-radius:8px;background:rgba(90,158,114,0.1);border:1px solid rgba(90,158,114,0.25);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(90,158,114,0.3);transition:all 0.4s">✅ SÍ</div>
+            <button onclick="refReveal(3,'si')" style="height:60px;border-radius:8px;background:var(--bg-raised);border:1px solid var(--dim);font-size:26px;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">?</button>
+          </div>
+
+          <div id="ref-row-4" style="display:grid;grid-template-columns:1fr 140px 140px 140px;gap:12px;align-items:center">
+            <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:8px;padding:18px 24px;font-size:21px;color:var(--off)">Estrategias de licitación y precios de propuesta</div>
+            <div id="ref-no-4"  style="height:60px;border-radius:8px;background:rgba(184,64,64,0.12);border:1px solid rgba(184,64,64,0.3);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(184,64,64,0.35);transition:all 0.4s">🚫 NO</div>
+            <div id="ref-si-4"  style="height:60px;border-radius:8px;background:rgba(90,158,114,0.1);border:1px solid rgba(90,158,114,0.25);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:rgba(90,158,114,0.3);transition:all 0.4s">✅ SÍ</div>
+            <button onclick="refReveal(4,'no')" style="height:60px;border-radius:8px;background:var(--bg-raised);border:1px solid var(--dim);font-size:26px;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">?</button>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div style="flex-shrink:0;margin-top:20px;font-size:18px;color:var(--muted);font-style:italic">
+          El facilitador revela las respuestas una a una y discute con el grupo.
+          <button onclick="refRevealAll()" style="margin-left:20px;background:transparent;border:1px solid var(--dim);border-radius:6px;padding:8px 18px;font-size:15px;color:var(--muted);cursor:pointer;font-style:normal;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">Revelar todas</button>
+          <button onclick="refReset()" style="margin-left:8px;background:transparent;border:1px solid var(--dim);border-radius:6px;padding:8px 18px;font-size:15px;color:var(--muted);cursor:pointer;font-style:normal;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--dim)';this.style.color='var(--muted)'">↺ Reiniciar</button>
+        </div>
+
+      </div>
+
+      <script>
+      (function(){
+        var answers = ['no','si','no','si','no'];
+
+        window.refReveal = function(idx, ans) {
+          var noEl = document.getElementById('ref-no-' + idx);
+          var siEl = document.getElementById('ref-si-' + idx);
+          var btn  = document.querySelector('#ref-row-' + idx + ' button');
+          if (ans === 'no') {
+            noEl.style.background = 'rgba(184,64,64,0.85)';
+            noEl.style.borderColor = '#B84040';
+            noEl.style.color = '#fff';
+            siEl.style.opacity = '0.2';
+          } else {
+            siEl.style.background = 'rgba(90,158,114,0.85)';
+            siEl.style.borderColor = '#5a9e72';
+            siEl.style.color = '#fff';
+            noEl.style.opacity = '0.2';
+          }
+          btn.style.opacity = '0';
+          btn.style.pointerEvents = 'none';
+        };
+
+        window.refRevealAll = function() {
+          answers.forEach(function(ans, i){ refReveal(i, ans); });
+        };
+
+        window.refReset = function() {
+          for (var i = 0; i < 5; i++) {
+            var noEl = document.getElementById('ref-no-' + i);
+            var siEl = document.getElementById('ref-si-' + i);
+            var btn  = document.querySelector('#ref-row-' + i + ' button');
+            noEl.style.background = 'rgba(184,64,64,0.12)';
+            noEl.style.borderColor = 'rgba(184,64,64,0.3)';
+            noEl.style.color = 'rgba(184,64,64,0.35)';
+            noEl.style.opacity = '1';
+            siEl.style.background = 'rgba(90,158,114,0.1)';
+            siEl.style.borderColor = 'rgba(90,158,114,0.25)';
+            siEl.style.color = 'rgba(90,158,114,0.3)';
+            siEl.style.opacity = '1';
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          }
+        };
+      })();
+      </script>
     </div>
 
     <!-- ══ SLIDE 17: CHAPTER - PROMPTS ══ -->
@@ -1353,44 +1953,25 @@
               <span style="font-size:13px;color:var(--muted);margin-left:8px;letter-spacing:0.05em">prompt-template.xml</span>
               <button id="copyPromptBtn" onclick="copyPromptTemplate()" style="margin-left:auto;background:transparent;border:1px solid var(--dim);border-radius:4px;padding:5px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.2s;letter-spacing:0.03em" onmouseover="this.style.borderColor='#C85428';this.style.color='#C85428'" onmouseout="if(this.textContent.includes('Copiar')){this.style.borderColor='';this.style.color=''}">⎘ Copiar template</button>
             </div>
-            <pre style="flex:1;overflow:auto;padding:20px 24px;margin:0;font-family:'SF Mono','Fira Code',monospace;font-size:13.5px;line-height:1.7;color:var(--off);white-space:pre"><span style="color:var(--muted)">&lt;system&gt;</span>
-  <span style="color:var(--white)">Eres un</span> <span style="color:var(--orange)">[rol específico]</span> <span style="color:var(--white)">especializado en</span> <span style="color:var(--orange)">[dominio]</span><span style="color:var(--white)">.</span>
-  <span style="color:var(--orange)">[Una oración que define tono y enfoque.]</span>
-<span style="color:var(--muted)">&lt;/system&gt;</span>
+            <pre style="flex:1;overflow:auto;padding:28px 32px;margin:0;font-family:'SF Mono','Fira Code',monospace;font-size:15px;line-height:1.85;color:var(--off);white-space:pre"><span style="color:var(--muted)">&lt;rol&gt;</span>
+  <span style="color:var(--orange)">[Define la identidad de la IA, su nivel de experiencia</span>
+  <span style="color:var(--orange)"> y su especialidad]</span>
+<span style="color:var(--muted)">&lt;/rol&gt;</span>
 
-<span style="color:var(--muted)">&lt;context&gt;</span>
-  <span style="color:var(--orange)">[Por qué existe este prompt. Cuál es el objetivo real.]</span>
-  <span style="color:var(--orange)">[Audiencia, restricciones o información de fondo.]</span>
-<span style="color:var(--muted)">&lt;/context&gt;</span>
+<span style="color:var(--muted)">&lt;contexto&gt;</span>
+  <span style="color:var(--orange)">[Proporciona información de fondo, el problema a resolver</span>
+  <span style="color:var(--orange)"> o detalles del cliente]</span>
+<span style="color:var(--muted)">&lt;/contexto&gt;</span>
 
-<span style="color:var(--muted)">&lt;documents&gt;</span>
-  <span style="color:var(--muted)">&lt;document index=<span style="color:var(--green)">"1"</span>&gt;</span>
-    <span style="color:var(--muted)">&lt;source&gt;</span><span style="color:var(--orange)">[nombre o URL]</span><span style="color:var(--muted)">&lt;/source&gt;</span>
-    <span style="color:var(--muted)">&lt;document_content&gt;</span>
-      <span style="color:var(--orange)">[Contenido de referencia, datos, código]</span>
-    <span style="color:var(--muted)">&lt;/document_content&gt;</span>
-  <span style="color:var(--muted)">&lt;/document&gt;</span>
-<span style="color:var(--muted)">&lt;/documents&gt;</span>
+<span style="color:var(--muted)">&lt;instruccion&gt;</span>
+  <span style="color:var(--orange)">[Describe de forma clara y directa la tarea exacta</span>
+  <span style="color:var(--orange)"> que la IA debe realizar]</span>
+<span style="color:var(--muted)">&lt;/instruccion&gt;</span>
 
-<span style="color:var(--muted)">&lt;instructions&gt;</span>
-  <span style="color:var(--orange)">[Lo que pides. Claro y directo.]</span>
-  <span style="color:var(--white)">1. [Paso uno si el orden importa]</span>
-  <span style="color:var(--white)">2. [Paso dos]</span>
-  <span style="color:var(--white)">3. [Paso tres]</span>
-<span style="color:var(--muted)">&lt;/instructions&gt;</span>
-
-<span style="color:var(--muted)">&lt;examples&gt;</span>
-  <span style="color:var(--muted)">&lt;example&gt;</span>
-    <span style="color:var(--muted)">&lt;input&gt;</span><span style="color:var(--orange)">[Ejemplo de entrada]</span><span style="color:var(--muted)">&lt;/input&gt;</span>
-    <span style="color:var(--muted)">&lt;output&gt;</span><span style="color:var(--orange)">[Respuesta ideal]</span><span style="color:var(--muted)">&lt;/output&gt;</span>
-  <span style="color:var(--muted)">&lt;/example&gt;</span>
-<span style="color:var(--muted)">&lt;/examples&gt;</span>
-
-<span style="color:var(--muted)">&lt;output_format&gt;</span>
-  <span style="color:var(--orange)">[Tono, longitud, idioma, estructura]</span>
-  <span style="color:var(--white)">Ejemplo: "Responde en español, prosa fluida, sin bullets"</span>
-  <span style="color:var(--white)">Ejemplo: "Máximo 3 párrafos. Sin encabezados markdown."</span>
-<span style="color:var(--muted)">&lt;/output_format&gt;</span></pre>
+<span style="color:var(--muted)">&lt;formato&gt;</span>
+  <span style="color:var(--orange)">[Especifica cómo quieres la respuesta: HTML, Markdown,</span>
+  <span style="color:var(--orange)"> tabla, viñetas, etc.]</span>
+<span style="color:var(--muted)">&lt;/formato&gt;</span></pre>
           </div>
         </div>
 
@@ -1461,15 +2042,15 @@
         <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:20px">
           <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:28px 32px">
             <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px">🎯 Escenario del ejercicio</p>
-            <p style="font-size:18px;color:var(--off);line-height:1.65">Tu equipo tuvo una reunión con un cliente importante. Necesitas enviarle un resumen de los acuerdos. Normalmente te toma 30 minutos escribirlo. <span style="color:var(--white);font-weight:600">Ahora usa la IA.</span></p>
+            <p style="font-size:20px;color:var(--off);line-height:1.65">Un cliente residencial te envió un mensaje preguntando por el costo y tiempo de una instalación eléctrica en su casa. Necesitas <span style="color:var(--white);font-weight:600">responder su mensaje y redactar un oficio formal</span> presentando los servicios de DCI — empresa especializada en redes eléctricas de media y baja tensión e instalaciones residenciales e industriales.</p>
           </div>
           <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:28px 32px;flex:1">
             <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px">📋 Usa la fórmula dorada</p>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Asistente ejecutivo con experiencia en comunicación B2B</div>
-              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>Reunión con [nombre cliente], discutimos [temas principales], acordamos [compromisos]</div>
-              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Redactar email de seguimiento post-reunión con los acuerdos</div>
-              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Máx. 200 palabras, tono profesional, estructura: intro + acuerdos + próximos pasos</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Asesor comercial de DCI, empresa especializada en instalaciones eléctricas residenciales e industriales</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>Un cliente residencial preguntó por WhatsApp el costo y tiempo de una instalación eléctrica en su vivienda</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Responder el mensaje y redactar un oficio formal presentando los servicios de DCI</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:12px 16px;font-size:17px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Primero: respuesta cordial por WhatsApp (máx. 3 líneas). Segundo: oficio formal con membrete, saludo, cuerpo y cierre</div>
             </div>
           </div>
         </div>
@@ -1477,19 +2058,11 @@
         <div class="practice-area" style="flex:1;min-height:0">
           <div class="practice-label">✍️ Escribe tu prompt aquí</div>
           <textarea class="practice-textarea" id="practiceTextarea" style="flex:1;min-height:0" placeholder="Construye tu prompt usando la fórmula dorada...&#10;&#10;Eres un [rol]...&#10;El contexto es...&#10;Necesito que...&#10;El formato debe ser..."></textarea>
-          <div>
-            <p style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px">CHIPS DE AYUDA (clic para agregar)</p>
-            <div class="practice-hints">
-              <span class="hint-tag" onclick="addHint(this)">+ Rol: asistente ejecutivo</span>
-              <span class="hint-tag" onclick="addHint(this)">+ Tono profesional</span>
-              <span class="hint-tag" onclick="addHint(this)">+ Máx. 200 palabras</span>
-              <span class="hint-tag" onclick="addHint(this)">+ Incluir próximos pasos</span>
-              <span class="hint-tag" onclick="addHint(this)">+ Sin jerga técnica</span>
-              <span class="hint-tag" onclick="addHint(this)">+ Idioma español</span>
-            </div>
+          <!-- Buttons row -->
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePrompt()" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+            <button id="examplePromptBtn" onclick="toggleExamplePrompt()" style="padding:12px 20px;background:transparent;border:1px solid var(--dim);border-radius:4px;color:var(--muted);font-size:14px;font-weight:600;letter-spacing:0.04em;cursor:pointer;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="if(!window._exampleActive){this.style.borderColor='var(--dim)';this.style.color='var(--muted)'}">💡 Ver prompt ejemplo</button>
           </div>
-          <!-- Validate button -->
-          <button onclick="validatePrompt()" style="margin-top:4px;padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;align-self:flex-start;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
           <!-- Validator result panel -->
           <div id="promptValidatorResult" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
         </div>
@@ -1545,10 +2118,6 @@
               <div class="token-stat">
                 <div class="ts-num">8K</div>
                 <div class="ts-label">tokens ≈ reunión de 1h</div>
-              </div>
-              <div class="token-stat">
-                <div class="ts-num">💰</div>
-                <div class="ts-label">APIs cobran por token</div>
               </div>
             </div>
           </div>
@@ -1740,26 +2309,6 @@
               </div>
             </div>
 
-            <!-- Row: Ideas -->
-            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
-              <div style="display:flex;align-items:center;gap:12px">
-                <span style="font-size:22px">💡</span>
-                <div>
-                  <div style="font-size:24px;font-weight:700;color:var(--white)">10 ideas de marketing</div>
-                  <div style="font-size:17px;color:var(--muted)">Campaña producto ecológico</div>
-                </div>
-              </div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">75</div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">420</div>
-              <div style="text-align:center;font-size:32px;font-weight:800;color:var(--green)">495</div>
-              <div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <div style="flex:1;height:9px;background:var(--bg-raised);border-radius:5px;overflow:hidden"><div style="width:0.39%;height:100%;background:var(--green);border-radius:5px;min-width:5px"></div></div>
-                  <span style="font-size:19px;color:var(--green);font-weight:700;white-space:nowrap">0.4%</span>
-                </div>
-              </div>
-            </div>
-
             <!-- Row: Contrato -->
             <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
               <div style="display:flex;align-items:center;gap:12px">
@@ -1780,46 +2329,6 @@
               </div>
             </div>
 
-            <!-- Row: XLS -->
-            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
-              <div style="display:flex;align-items:center;gap:12px">
-                <span style="font-size:22px">📊</span>
-                <div>
-                  <div style="font-size:24px;font-weight:700;color:var(--white)">Analizar XLS financiero</div>
-                  <div style="font-size:17px;color:var(--muted)">500 filas de datos → reporte</div>
-                </div>
-              </div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">4,200</div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">900</div>
-              <div style="text-align:center;font-size:32px;font-weight:800;color:#C8A040">5,100</div>
-              <div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <div style="flex:1;height:9px;background:var(--bg-raised);border-radius:5px;overflow:hidden"><div style="width:4%;height:100%;background:#C8A040;border-radius:5px"></div></div>
-                  <span style="font-size:19px;color:#C8A040;font-weight:700;white-space:nowrap">4.0%</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Row: Traducción -->
-            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
-              <div style="display:flex;align-items:center;gap:12px">
-                <span style="font-size:22px">📄</span>
-                <div>
-                  <div style="font-size:24px;font-weight:700;color:var(--white)">Traducir documento</div>
-                  <div style="font-size:17px;color:var(--muted)">5 páginas inglés → español</div>
-                </div>
-              </div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">2,100</div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">2,200</div>
-              <div style="text-align:center;font-size:32px;font-weight:800;color:#C8A040">4,300</div>
-              <div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <div style="flex:1;height:9px;background:var(--bg-raised);border-radius:5px;overflow:hidden"><div style="width:3.4%;height:100%;background:#C8A040;border-radius:5px"></div></div>
-                  <span style="font-size:19px;color:#C8A040;font-weight:700;white-space:nowrap">3.4%</span>
-                </div>
-              </div>
-            </div>
-
             <!-- Row: Transcripción -->
             <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
               <div style="display:flex;align-items:center;gap:12px">
@@ -1836,26 +2345,6 @@
                 <div style="display:flex;align-items:center;gap:10px">
                   <div style="flex:1;height:9px;background:var(--bg-raised);border-radius:5px;overflow:hidden"><div style="width:8.75%;height:100%;background:var(--orange);border-radius:5px"></div></div>
                   <span style="font-size:19px;color:var(--orange);font-weight:700;white-space:nowrap">8.7%</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Row: PowerPoint -->
-            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 2.2fr;padding:8px 24px;gap:16px;border-bottom:1px solid var(--dim);align-items:center">
-              <div style="display:flex;align-items:center;gap:12px">
-                <span style="font-size:22px">📑</span>
-                <div>
-                  <div style="font-size:24px;font-weight:700;color:var(--white)">Presentación PowerPoint</div>
-                  <div style="font-size:17px;color:var(--muted)">10 slides con estructura y contenido</div>
-                </div>
-              </div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">800</div>
-              <div style="text-align:center;font-size:26px;font-weight:600;color:var(--off)">12,000</div>
-              <div style="text-align:center;font-size:32px;font-weight:800;color:var(--orange)">12,800</div>
-              <div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <div style="flex:1;height:9px;background:var(--bg-raised);border-radius:5px;overflow:hidden"><div style="width:10%;height:100%;background:var(--orange);border-radius:5px"></div></div>
-                  <span style="font-size:19px;color:var(--orange);font-weight:700;white-space:nowrap">10%</span>
                 </div>
               </div>
             </div>
@@ -1907,17 +2396,8 @@
           <!-- Qué es -->
           <div style="background:var(--bg-card);border:1px solid var(--dim);border-left:5px solid var(--orange);border-radius:4px;padding:32px 36px;flex:1.3;display:flex;flex-direction:column;justify-content:center">
             <p style="font-size:22px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:14px">¿Qué es?</p>
-            <p style="font-size:46px;color:var(--white);font-weight:600;line-height:1.2;margin-bottom:14px">La memoria de trabajo de la IA en cada sesión</p>
-            <p style="font-size:28px;color:var(--muted);line-height:1.6">El espacio máximo de texto que el modelo puede <strong style="color:var(--off)">leer y recordar al mismo tiempo</strong> — tu prompt, el historial completo y la respuesta.</p>
-          </div>
-
-          <!-- Analogía -->
-          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:4px;padding:24px 36px;display:flex;align-items:center;gap:28px;flex-shrink:0">
-            <div style="font-size:72px;flex-shrink:0">🗂️</div>
-            <div>
-              <p style="font-size:34px;font-weight:700;color:var(--white);margin-bottom:8px">Como un escritorio físico</p>
-              <p style="font-size:26px;color:var(--muted);line-height:1.5">Cuando se llena, los papeles más antiguos caen — la IA <strong style="color:var(--off)">olvida lo que estuvo antes</strong>.</p>
-            </div>
+            <p style="font-size:34px;color:var(--white);font-weight:600;line-height:1.2;margin-bottom:14px">La memoria de trabajo de la IA en cada sesión</p>
+            <p style="font-size:20px;color:var(--muted);line-height:1.6">El espacio máximo de texto que el modelo puede <strong style="color:var(--off)">leer y recordar al mismo tiempo</strong> — tu prompt, el historial completo y la respuesta.</p>
           </div>
 
           <!-- Por qué importa -->
@@ -1926,15 +2406,15 @@
             <div style="display:flex;flex-direction:column;gap:14px">
               <div style="display:flex;align-items:flex-start;gap:14px">
                 <span style="color:var(--orange);font-size:30px;flex-shrink:0;line-height:1.2">→</span>
-                <p style="font-size:27px;color:var(--muted);line-height:1.4">Conversaciones largas hacen que la IA <strong style="color:var(--white)">pierda el hilo</strong> de lo que dijiste al inicio.</p>
+                <p style="font-size:20px;color:var(--muted);line-height:1.4">Conversaciones largas hacen que la IA <strong style="color:var(--white)">pierda el hilo</strong> de lo que dijiste al inicio.</p>
               </div>
               <div style="display:flex;align-items:flex-start;gap:14px">
-                <span style="color:var(--orange);font-size:30px;flex-shrink:0;line-height:1.2">→</span>
-                <p style="font-size:27px;color:var(--muted);line-height:1.4">Documentos muy largos pueden <strong style="color:var(--white)">no procesarse completos</strong> en un solo prompt.</p>
+                <span style="color:var(--orange);font-size:22px;flex-shrink:0;line-height:1.2">→</span>
+                <p style="font-size:20px;color:var(--muted);line-height:1.4">Documentos muy largos pueden <strong style="color:var(--white)">no procesarse completos</strong> en un solo prompt.</p>
               </div>
               <div style="display:flex;align-items:flex-start;gap:14px">
-                <span style="color:var(--orange);font-size:30px;flex-shrink:0;line-height:1.2">→</span>
-                <p style="font-size:27px;color:var(--muted);line-height:1.4">En cuentas gratuitas la ventana <strong style="color:var(--white)">es más pequeña</strong> y se agota más rápido.</p>
+                <span style="color:var(--orange);font-size:22px;flex-shrink:0;line-height:1.2">→</span>
+                <p style="font-size:20px;color:var(--muted);line-height:1.4">En cuentas gratuitas la ventana <strong style="color:var(--white)">es más pequeña</strong> y se agota más rápido.</p>
               </div>
             </div>
           </div>
@@ -1948,24 +2428,24 @@
             <p style="font-size:20px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px">Ventana de contexto por plataforma</p>
             <div style="display:flex;flex-direction:column;gap:16px">
               <div style="display:flex;align-items:center;gap:16px">
-                <span style="font-size:26px;color:var(--white);font-weight:600;flex:0 0 190px">ChatGPT Free</span>
+                <span style="font-size:20px;color:var(--white);font-weight:600;flex:0 0 160px">ChatGPT Free</span>
                 <div style="flex:1;height:18px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:3.2%;height:100%;background:#C8A040;border-radius:6px;min-width:10px"></div></div>
                 <span style="font-size:32px;color:#C8A040;font-weight:800;white-space:nowrap;min-width:100px;text-align:right">32K</span>
               </div>
               <div style="display:flex;align-items:center;gap:16px">
-                <span style="font-size:26px;color:var(--white);font-weight:600;flex:0 0 190px">ChatGPT Plus</span>
+                <span style="font-size:20px;color:var(--white);font-weight:600;flex:0 0 160px">ChatGPT Plus</span>
                 <div style="flex:1;height:18px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:12.8%;height:100%;background:var(--green);border-radius:6px"></div></div>
-                <span style="font-size:32px;color:var(--green);font-weight:800;white-space:nowrap;min-width:100px;text-align:right">128K</span>
+                <span style="font-size:24px;color:var(--green);font-weight:800;white-space:nowrap;min-width:80px;text-align:right">128K</span>
               </div>
               <div style="display:flex;align-items:center;gap:16px">
-                <span style="font-size:26px;color:var(--white);font-weight:600;flex:0 0 190px">Claude Free</span>
-                <div style="flex:1;height:18px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:20%;height:100%;background:var(--green);border-radius:6px"></div></div>
-                <span style="font-size:32px;color:var(--green);font-weight:800;white-space:nowrap;min-width:100px;text-align:right">200K</span>
+                <span style="font-size:20px;color:var(--white);font-weight:600;flex:0 0 160px">Claude Free</span>
+                <div style="flex:1;height:14px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:20%;height:100%;background:var(--green);border-radius:6px"></div></div>
+                <span style="font-size:24px;color:var(--green);font-weight:800;white-space:nowrap;min-width:80px;text-align:right">200K</span>
               </div>
               <div style="display:flex;align-items:center;gap:16px">
-                <span style="font-size:26px;color:var(--white);font-weight:600;flex:0 0 190px">Gemini Free</span>
-                <div style="flex:1;height:18px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:100%;height:100%;background:var(--orange);border-radius:6px"></div></div>
-                <span style="font-size:32px;color:var(--orange);font-weight:800;white-space:nowrap;min-width:100px;text-align:right">1M 🏆</span>
+                <span style="font-size:20px;color:var(--white);font-weight:600;flex:0 0 160px">Gemini Free</span>
+                <div style="flex:1;height:14px;background:var(--bg-raised);border-radius:6px;overflow:hidden"><div style="width:100%;height:100%;background:var(--orange);border-radius:6px"></div></div>
+                <span style="font-size:24px;color:var(--orange);font-weight:800;white-space:nowrap;min-width:80px;text-align:right">1M 🏆</span>
               </div>
             </div>
             <p style="font-size:20px;color:var(--muted);margin-top:16px;font-style:italic">128K ≈ 96,000 palabras ≈ una novela completa</p>
@@ -1976,11 +2456,11 @@
             <p style="font-size:20px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:0">✅ Cómo usarla bien</p>
             <div style="display:flex;align-items:flex-start;gap:12px">
               <span style="color:var(--green);font-weight:900;font-size:26px;flex-shrink:0;line-height:1.2">✓</span>
-              <p style="font-size:23px;color:var(--muted);line-height:1.3"><strong style="color:var(--off)">Sé conciso</strong> — menos relleno, más señal. Cada token cuenta.</p>
+              <p style="font-size:19px;color:var(--muted);line-height:1.3"><strong style="color:var(--off)">Sé conciso</strong> — menos relleno, más señal. Cada token cuenta.</p>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px">
-              <span style="color:var(--green);font-weight:900;font-size:26px;flex-shrink:0;line-height:1.2">✓</span>
-              <p style="font-size:23px;color:var(--muted);line-height:1.3"><strong style="color:var(--off)">Nueva sesión</strong> para temas distintos — no arrastres contexto viejo.</p>
+              <span style="color:var(--green);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.2">✓</span>
+              <p style="font-size:19px;color:var(--muted);line-height:1.3"><strong style="color:var(--off)">Nueva sesión</strong> para temas distintos — no arrastres contexto viejo.</p>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px">
               <span style="color:var(--green);font-weight:900;font-size:26px;flex-shrink:0;line-height:1.2">✓</span>
@@ -2037,7 +2517,7 @@
       </div>
       <div class="slide-body" style="flex-direction:column;gap:16px;padding:28px 100px 36px">
 
-        <p style="font-size:26px;color:var(--muted);text-align:center;flex-shrink:0">5 niveles de integración — de los chats básicos a los agentes autónomos</p>
+        <p style="font-size:22px;color:var(--muted);text-align:center;flex-shrink:0">5 niveles de integración — de los chats básicos a los agentes autónomos</p>
 
         <!-- Escalera ascendente: base decrece de izq a der → card crece → efecto "subiendo" -->
         <div style="display:flex;align-items:stretch;gap:12px;flex:1;min-height:0">
@@ -2050,9 +2530,9 @@
                 <div style="font-size:32px;margin-bottom:10px">💬</div>
                 <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C8A040;margin-bottom:8px">Nivel 1</p>
                 <p style="font-size:26px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px">Prompts<br>& Chats</p>
-                <p style="font-size:16px;color:var(--muted);line-height:1.5">Conversaciones individuales. Cada sesión empieza desde cero.</p>
+                <p style="font-size:19px;color:var(--muted);line-height:1.5">Conversaciones individuales. Cada sesión empieza desde cero.</p>
               </div>
-              <div style="margin-top:14px;padding:9px 12px;background:rgba(200,160,64,0.08);border-radius:4px;font-size:13px;color:#C8A040;font-weight:600">ChatGPT · Claude · Gemini</div>
+              <div style="margin-top:14px;padding:11px 14px;background:rgba(200,160,64,0.08);border-radius:4px;font-size:17px;color:#C8A040;font-weight:600">ChatGPT · Claude · Gemini</div>
             </div>
           </div>
 
@@ -2064,9 +2544,9 @@
                 <div style="font-size:32px;margin-bottom:10px">📁</div>
                 <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C87828;margin-bottom:8px">Nivel 2</p>
                 <p style="font-size:26px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px">Projects<br>& Contexto</p>
-                <p style="font-size:16px;color:var(--muted);line-height:1.5">Contexto persistente, instrucciones y archivos guardados por proyecto.</p>
+                <p style="font-size:19px;color:var(--muted);line-height:1.5">Contexto persistente, instrucciones y archivos guardados por proyecto.</p>
               </div>
-              <div style="margin-top:14px;padding:9px 12px;background:rgba(200,120,40,0.08);border-radius:4px;font-size:13px;color:#C87828;font-weight:600">Claude Projects · ChatGPT Projects</div>
+              <div style="margin-top:14px;padding:11px 14px;background:rgba(200,120,40,0.08);border-radius:4px;font-size:17px;color:#C87828;font-weight:600">Claude Projects · ChatGPT Projects</div>
             </div>
           </div>
 
@@ -2078,9 +2558,9 @@
                 <div style="font-size:32px;margin-bottom:10px">💎</div>
                 <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Nivel 3</p>
                 <p style="font-size:26px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px">Gemas &<br>Prototipos</p>
-                <p style="font-size:16px;color:var(--muted);line-height:1.5">Asistentes personalizados para tareas específicas de tu rol o empresa.</p>
+                <p style="font-size:19px;color:var(--muted);line-height:1.5">Asistentes personalizados para tareas específicas de tu rol o empresa.</p>
               </div>
-              <div style="margin-top:14px;padding:9px 12px;background:rgba(200,84,40,0.08);border-radius:4px;font-size:13px;color:var(--orange);font-weight:600">Gemini Gems · GPTs · Claude Skills</div>
+              <div style="margin-top:14px;padding:11px 14px;background:rgba(200,84,40,0.08);border-radius:4px;font-size:17px;color:var(--orange);font-weight:600">Gemini Gems · GPTs · Claude Skills</div>
             </div>
           </div>
 
@@ -2092,9 +2572,9 @@
                 <div style="font-size:32px;margin-bottom:10px">⚡</div>
                 <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8C50B4;margin-bottom:8px">Nivel 4</p>
                 <p style="font-size:26px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px">Skills &<br>Workflows</p>
-                <p style="font-size:16px;color:var(--muted);line-height:1.5">Flujos automatizados que conectan la IA con otras herramientas y datos.</p>
+                <p style="font-size:19px;color:var(--muted);line-height:1.5">Flujos automatizados que conectan la IA con otras herramientas y datos.</p>
               </div>
-              <div style="margin-top:14px;padding:9px 12px;background:rgba(140,80,180,0.08);border-radius:4px;font-size:13px;color:#8C50B4;font-weight:600">Zapier · Make.com · n8n · Power Automate</div>
+              <div style="margin-top:14px;padding:11px 14px;background:rgba(140,80,180,0.08);border-radius:4px;font-size:17px;color:#8C50B4;font-weight:600">Zapier · Make.com · n8n · Power Automate</div>
             </div>
           </div>
 
@@ -2105,9 +2585,9 @@
                 <div style="font-size:32px;margin-bottom:10px">🤖</div>
                 <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:8px">Nivel 5</p>
                 <p style="font-size:26px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:10px">Uso<br>Agéntico</p>
-                <p style="font-size:16px;color:var(--muted);line-height:1.5">La IA toma decisiones y ejecuta tareas autónomas de múltiples pasos.</p>
+                <p style="font-size:19px;color:var(--muted);line-height:1.5">La IA toma decisiones y ejecuta tareas autónomas de múltiples pasos.</p>
               </div>
-              <div style="margin-top:14px;padding:9px 12px;background:rgba(90,158,114,0.08);border-radius:4px;font-size:13px;color:var(--green);font-weight:600">Claude Agents · AutoGPT · LangChain</div>
+              <div style="margin-top:14px;padding:11px 14px;background:rgba(90,158,114,0.08);border-radius:4px;font-size:17px;color:var(--green);font-weight:600">Claude Agents · AutoGPT · LangChain</div>
             </div>
           </div>
 
@@ -2122,177 +2602,214 @@
       </div>
     </div>
 
-    <div class="slide slide-content" data-index="29">
+    <!-- ══ CASO 1: CONSULTA SIMPLE ══ -->
+    <div class="slide slide-content" data-index="34">
       <div class="slide-header">
-        <div class="slide-label">Aplicación 01 · Correo Electrónico</div>
-        <h2>Prompt para escribir un Email Estándar</h2>
+        <div class="slide-label">Taller · Caso 1 · Consulta Técnica</div>
+        <h2>Escribir un Prompt con una Consulta Simple</h2>
       </div>
-      <div class="slide-body" style="gap:40px;flex-direction:row">
-        <div class="template-card">
-          <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">📋 TEMPLATE DE PROMPT — COPIA Y ADAPTA</p>
-          <div class="template-prompt">
-            Eres un <span class="ph">[profesional de comunicación corporativa]</span> con experiencia en <span class="ph">[industria / área]</span>.<br><br>
-            Redacta un email de <span class="ph">[tipo: presentación / seguimiento / solicitud / actualización]</span> para <span class="ph">[nombre o cargo del destinatario]</span> de <span class="ph">[empresa / área]</span>.<br><br>
-            El contexto es: <span class="ph">[describe la situación en 2-3 oraciones]</span><br><br>
-            El objetivo del email es: <span class="ph">[acción específica que quieres que tome el lector]</span><br><br>
-            Tono: <span class="ph">[formal / semiformal / cercano]</span>. Longitud máxima: <span class="ph">[150 / 200 / 250]</span> palabras.<br>
-            Incluye: asunto del correo, saludo apropiado, cuerpo del mensaje y cierre con firma.
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">Tu supervisor te pregunta si el <strong style="color:var(--white)">cable 4 AWG</strong> es adecuado para una carga de 60 A en la planta industrial del cliente Industrias Andes. Necesitas consultarle a la IA antes de responder.</p>
           </div>
-          <div class="template-tip">
-            <strong>💡 Tip de iteración:</strong> Si el primer resultado no es exacto, dile: "El tono está bien, pero el asunto es muy genérico, propón 3 opciones más específicas" o "Hazlo 30% más corto manteniendo el CTA".
-          </div>
-        </div>
-        <div class="panel-cards">
-          <div class="point-card positive">
-            <strong>✅ Casos de uso habituales</strong>
-            <p>Primer contacto con cliente · Seguimiento post-reunión · Solicitud de información · Anuncio de cambios · Agradecimiento formal</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>⏱️ Tiempo estimado</strong>
-            <p>Con IA bien instruida: <strong>2-4 minutos</strong> vs. 15-30 min tradicional. Incluye revisión y ajuste.</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>⚠️ Siempre revisa</strong>
-            <p>Verifica nombres, fechas y datos específicos. La IA puede equivocarse en detalles que tú sí conoces. El criterio final es tuyo.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ SLIDE 25: MEETING SUMMARY ══ -->
-    <div class="slide slide-content" data-index="30">
-      <div class="slide-header">
-        <div class="slide-label">Aplicación 02 · Gestión del Conocimiento</div>
-        <h2>Prompt para Resumen de Reunión</h2>
-      </div>
-      <div class="slide-body" style="gap:40px;flex-direction:row">
-        <div class="template-card">
-          <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">📋 TEMPLATE DE PROMPT — COPIA Y ADAPTA</p>
-          <div class="template-prompt">
-            Eres un asistente ejecutivo experto en documentación corporativa.<br><br>
-            A continuación te pego las notas / transcripción de una reunión:<br>
-            <span class="ph">[Pega aquí las notas o transcripción]</span><br><br>
-            Genera un acta de reunión estructurada con:<br>
-            1. <strong style="color:var(--green)">Fecha, participantes y objetivo</strong><br>
-            2. <strong style="color:var(--green)">Puntos discutidos</strong> (máx. 5 bullets concisos)<br>
-            3. <strong style="color:var(--green)">Decisiones tomadas</strong><br>
-            4. <strong style="color:var(--green)">Acuerdos y compromisos</strong> (responsable + fecha límite)<br>
-            5. <strong style="color:var(--green)">Próxima reunión</strong> (si aplica)<br><br>
-            Tono formal. Sin opiniones ni interpretaciones. Solo hechos discutidos.
-          </div>
-          <div class="template-tip">
-            <strong>💡 Flujo recomendado:</strong> Graba la reunión → usa Whisper o Otter.ai para transcribir → pega la transcripción en este prompt → obtén el acta en 30 segundos.
-          </div>
-        </div>
-        <div class="panel-cards">
-          <div class="point-card positive">
-            <strong>✅ Cuándo usarlo</strong>
-            <p>Reuniones de equipo · Sesiones con clientes · Llamadas de seguimiento · Comités internos · Sesiones de lluvia de ideas</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>🔧 Herramientas complementarias</strong>
-            <p><strong>Transcripción:</strong> Whisper · Otter.ai · Teams Transcribe<br><strong>Distribución:</strong> pega el acta en Notion, Confluence o email</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>⏱️ Impacto real</strong>
-            <p>Una reunión de 1 hora normalmente tarda 30-45 min en documentar. Con IA: <strong>menos de 5 minutos.</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ SLIDE 26: REPORTE EJECUTIVO ══ -->
-    <div class="slide slide-content" data-index="31">
-      <div class="slide-header">
-        <div class="slide-label">Aplicación 03 · Reportes Ejecutivos</div>
-        <h2>Prompt para Reporte Ejecutivo</h2>
-      </div>
-      <div class="slide-body" style="gap:40px;flex-direction:row">
-        <div class="template-card">
-          <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">📋 TEMPLATE DE PROMPT — COPIA Y ADAPTA</p>
-          <div class="template-prompt">
-            Eres un director de área con experiencia en comunicación ejecutiva.<br><br>
-            Basándote en los siguientes datos e información:<br>
-            <span class="ph">[Pega datos: KPIs, resultados, métricas, eventos clave del período]</span><br><br>
-            Redacta un reporte ejecutivo de <span class="ph">[período: mes / trimestre / año]</span> para la <span class="ph">[audiencia: dirección general / consejo / inversor]</span>.<br><br>
-            Estructura requerida:<br>
-            • <strong style="color:var(--green)">Resumen ejecutivo</strong> (3 oraciones, lo más importante)<br>
-            • <strong style="color:var(--green)">Resultados vs. objetivos</strong> (qué se logró y qué no)<br>
-            • <strong style="color:var(--green)">Factores de éxito y áreas de mejora</strong><br>
-            • <strong style="color:var(--green)">Acciones para el siguiente período</strong><br><br>
-            Tono: directo, basado en datos, sin excusas. Máx. 400 palabras.
-          </div>
-          <div class="template-tip">
-            <strong>💡 Variante para presentación:</strong> Agrega "Después del reporte, genera 5 bullets para una slide de PowerPoint que resuma los puntos más impactantes para una presentación de 3 minutos."
-          </div>
-        </div>
-        <div class="panel-cards">
-          <div class="point-card positive">
-            <strong>✅ Aplicaciones típicas</strong>
-            <p>Reporte mensual de área · Cierre trimestral · Informe para socios · Presentación de resultados · Dashboard narrativo</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>📊 Dato de impacto</strong>
-            <p>Un reporte ejecutivo bien estructurado normalmente toma 2-4 horas. Con IA y datos listos: <strong>20-40 minutos</strong> incluyendo revisión.</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>⚠️ Importante recordar</strong>
-            <p>La IA estructura y redacta, pero los números y el análisis estratégico los pones tú. Nunca pidas que "invente" datos faltantes.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ SLIDE 27: STATUS UPDATE ══ -->
-    <div class="slide slide-content" data-index="32">
-      <div class="slide-header">
-        <div class="slide-label">Aplicación 04 · Actualizaciones de Proyecto</div>
-        <h2>Prompt para Status Update y Progress Report</h2>
-      </div>
-      <div class="slide-body" style="gap:40px;flex-direction:row">
-        <div style="flex:1;display:flex;flex-direction:column;gap:20px">
-          <div class="template-card" style="flex:1">
-            <p style="font-size:10px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">📱 STATUS UPDATE INFORMAL (Slack, WhatsApp, chat de equipo)</p>
-            <div class="template-prompt" style="font-size:14px">
-              Redacta un status update breve y claro para el equipo.<br>
-              Proyecto: <span class="ph">[nombre]</span> · Semana: <span class="ph">[número/fecha]</span><br><br>
-              Avances: <span class="ph">[qué se completó]</span><br>
-              Bloqueantes: <span class="ph">[qué está detenido y por qué]</span><br>
-              Próximos pasos: <span class="ph">[qué sigue esta semana]</span><br><br>
-              Formato: bullets cortos, tono directo, máx. 100 palabras. Emoji permitidos.
-            </div>
-          </div>
-          <div class="template-card" style="flex:1">
-            <p style="font-size:10px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase">📄 PROGRESS REPORT FORMAL (dirección, cliente, stakeholders)</p>
-            <div class="template-prompt" style="font-size:14px">
-              Redacta un progress report formal del proyecto <span class="ph">[nombre]</span> para <span class="ph">[audiencia]</span>.<br><br>
-              Estado general: <span class="ph">[en tiempo / con retraso / adelantado]</span><br>
-              Avance %: <span class="ph">[porcentaje completado]</span> de <span class="ph">[alcance total]</span><br>
-              Hitos completados: <span class="ph">[lista]</span><br>
-              Riesgos actuales: <span class="ph">[describe]</span><br>
-              Solicitudes o decisiones pendientes: <span class="ph">[si aplica]</span><br><br>
-              Tono formal. Incluir semáforo (verde/amarillo/rojo) de estado general.
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Ingeniero eléctrico especialista en instalaciones industriales de baja y media tensión</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>Proyecto de instalación industrial, carga estimada de 60 A, normativa RETIE y NTC colombiana</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Indica si el cable 4 AWG es apto, cuál sería el calibre correcto y por qué, con referencia a la norma</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Respuesta directa de 3–4 oraciones, calibre recomendado en negrita</div>
             </div>
           </div>
         </div>
-        <div class="panel-cards">
-          <div class="point-card positive">
-            <strong>✅ Diferencia clave</strong>
-            <p><strong>Status update:</strong> comunicación interna rápida, informal, orientada a equipo operativo.<br><br><strong>Progress report:</strong> documento formal estructurado, para stakeholders o clientes con poder de decisión.</p>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c1" style="flex:1;min-height:0" placeholder="Eres un ingeniero eléctrico...&#10;&#10;Contexto: Proyecto industrial, carga de 60 A...&#10;&#10;Necesito que...&#10;&#10;Formato: respuesta directa de 3-4 oraciones..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c1','pvr_c1')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
           </div>
-          <div class="point-card neutral">
-            <strong>🔄 Cadencia recomendada</strong>
-            <p>Status update: semanal o por sprint<br>Progress report: quincenal o mensual según el proyecto</p>
-          </div>
-          <div class="point-card neutral">
-            <strong>⏱️ Ahorro de tiempo</strong>
-            <p>Ambos formatos preparados en menos de <strong>5 minutos</strong> con IA, vs. 20-40 min redactando desde cero.</p>
-          </div>
+          <div id="pvr_c1" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ SLIDE 28: CLOSING ══ -->
+    <!-- ══ CASO 2: OFICIO EN RESPUESTA A UN CORREO ══ -->
+    <div class="slide slide-content" data-index="35">
+      <div class="slide-header">
+        <div class="slide-label">Taller · Caso 2 · Comunicación Formal</div>
+        <h2>Prompt para Redactar un Oficio en Respuesta a un Correo</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">Recibes este correo: <em style="color:var(--white)">"Buenos días, somos Constructora Habitat e iniciamos instalaciones eléctricas de 12 viviendas. ¿Pueden enviar una propuesta?"</em> Debes redactar un oficio formal de respuesta.</p>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Asesor comercial de DCI Ingenieros, especialistas en redes eléctricas de media/baja tensión e instalaciones residenciales e industriales</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>Constructora Habitat solicita por correo una propuesta para instalaciones eléctricas de 12 viviendas unifamiliares en construcción</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Redactar oficio formal acusando recibo, presentando DCI y confirmando que un asesor los contactará para visita técnica</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Oficio con membrete, fecha, saludo formal, 3 párrafos, cierre y firma. Tono profesional. Máx. 250 palabras</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c2" style="flex:1;min-height:0" placeholder="Eres un asesor comercial de DCI Ingenieros...&#10;&#10;Contexto: Constructora Habitat solicita...&#10;&#10;Necesito que redactes...&#10;&#10;Formato: oficio formal con membrete, fecha, 3 párrafos..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c2','pvr_c2')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+          </div>
+          <div id="pvr_c2" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CASO 3: PROPUESTA COMERCIAL DESDE REQUERIMIENTOS ══ -->
+    <div class="slide slide-content" data-index="36">
+      <div class="slide-header">
+        <div class="slide-label">Taller · Caso 3 · Propuesta Comercial</div>
+        <h2>Prompt para Analizar Requerimientos y Crear una Propuesta Comercial</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">Un cliente envió un documento PDF con <strong style="color:var(--white)">2 páginas de requerimientos técnicos</strong> para la red eléctrica de su nueva planta de producción. Tu director necesita la propuesta comercial lista para mañana.</p>
+            <button onclick="downloadRequerimientosPDF(this)" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:transparent;border:1px solid var(--orange);border-radius:4px;color:var(--orange);font-size:15px;font-weight:600;letter-spacing:0.04em;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='rgba(200,84,40,0.12)'" onmouseout="this.style.background='transparent'">
+              <span>⬇</span> Descargar requerimientos.pdf
+            </button>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Especialista en propuestas comerciales para proyectos eléctricos industriales de DCI Ingenieros</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>[Pega aquí el texto del documento de requerimientos del cliente]</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Analiza los requerimientos y genera propuesta con: alcance, solución técnica propuesta, entregables, cronograma estimado y condiciones comerciales</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Secciones numeradas, tabla de entregables, resumen ejecutivo al inicio. Máx. 600 palabras</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c3" style="flex:1;min-height:0" placeholder="Eres un especialista en propuestas comerciales de DCI Ingenieros...&#10;&#10;A continuación el documento de requerimientos del cliente:&#10;[pega aquí el texto]&#10;&#10;Necesito que analices los requerimientos y generes...&#10;&#10;Formato: secciones numeradas, tabla de entregables..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c3','pvr_c3')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+          </div>
+          <div id="pvr_c3" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CASO 4: REPORTE TÉCNICO DESDE REQUERIMIENTOS ══ -->
+    <div class="slide slide-content" data-index="37">
+      <div class="slide-header">
+        <div class="slide-label">Taller · Caso 4 · Reporte Técnico</div>
+        <h2>Prompt para Analizar Requerimientos y Generar un Reporte Técnico</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">Tienes los requerimientos técnicos de una <strong style="color:var(--white)">subestación de media tensión</strong> para una planta industrial. Tu director necesita el reporte técnico antes de la reunión con el cliente mañana.</p>
+            <button onclick="downloadSubestacionPDF(this)" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:transparent;border:1px solid var(--orange);border-radius:4px;color:var(--orange);font-size:15px;font-weight:600;letter-spacing:0.04em;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='rgba(200,84,40,0.12)'" onmouseout="this.style.background='transparent'">
+              <span>⬇</span> Descargar requerimientos_subestacion.pdf
+            </button>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Ingeniero eléctrico senior especialista en sistemas de media tensión y diseño de subestaciones</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>[Pega aquí los requerimientos técnicos del proyecto — potencia, voltaje, topología, espacio disponible, normativa aplicable]</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Genera reporte técnico con: análisis de requerimientos, solución propuesta, equipos principales, normas (RETIE, NTC) y riesgos identificados</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Secciones numeradas, tabla de equipos principales, lenguaje técnico para ingenieros. Máx. 800 palabras</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c4" style="flex:1;min-height:0" placeholder="Eres un ingeniero eléctrico senior especialista en subestaciones...&#10;&#10;A continuación los requerimientos técnicos del proyecto:&#10;[pega aquí]&#10;&#10;Necesito que generes un reporte técnico que incluya...&#10;&#10;Formato: secciones numeradas, tabla de equipos, lenguaje técnico..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c4','pvr_c4')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+          </div>
+          <div id="pvr_c4" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CASO 5: INSTRUCCIONES PARA PROYECTO EN CHATGPT / CLAUDE ══ -->
+    <div class="slide slide-content" data-index="38">
+      <div class="slide-header">
+        <div class="slide-label">Taller · Caso 5 · Asistente Empresarial</div>
+        <h2>Crear las Instrucciones para un Proyecto en ChatGPT o Claude</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">Quieres crear un <strong style="color:var(--white)">asistente de IA permanente</strong> para el equipo comercial de DCI que conozca el portafolio y ayude a redactar propuestas y oficios — sin re-explicar el contexto cada vez.</p>
+            <button onclick="downloadPortafolioDCI(this)" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:transparent;border:1px solid var(--orange);border-radius:4px;color:var(--orange);font-size:15px;font-weight:600;letter-spacing:0.04em;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='rgba(200,84,40,0.12)'" onmouseout="this.style.background='transparent'">
+              <span>⬇</span> Descargar portafolio_DCI.pdf
+            </button>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Consultor de IA especialista en diseñar asistentes empresariales con instrucciones de sistema efectivas</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>DCI Ingenieros: empresa de redes eléctricas de media/baja tensión, instalaciones residenciales, industriales y telecomunicaciones</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Crea las instrucciones de sistema para un proyecto en Claude/ChatGPT que actúe como asistente comercial de DCI, capaz de generar propuestas y documentos formales</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Instrucciones listas para pegar en el proyecto. Secciones: Identidad, Conocimiento base, Tareas frecuentes, Tono y estilo</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c5" style="flex:1;min-height:0" placeholder="Eres un consultor de IA especialista en diseñar asistentes empresariales...&#10;&#10;Contexto: DCI Ingenieros es una empresa especializada en...&#10;&#10;Necesito que crees las instrucciones de sistema para un proyecto en Claude/ChatGPT...&#10;&#10;Formato: instrucciones organizadas en secciones listas para pegar..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c5','pvr_c5')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+          </div>
+          <div id="pvr_c5" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CASO 6: PROTOTIPO GEMINI GEM PARA FACTURAS ══ -->
+    <div class="slide slide-content" data-index="39">
+      <div class="slide-header">
+        <div class="slide-label">Taller · Caso 6 · Automatización</div>
+        <h2>Prototipar con Gemini un Gestor de Facturas en Google Sheets</h2>
+      </div>
+      <div class="slide-body" style="flex-direction:row;gap:36px;align-items:stretch">
+        <div style="flex:0 0 42%;display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px">🎯 Situación</p>
+            <p style="font-size:20px;color:var(--off);line-height:1.6">El área administrativa de DCI maneja docenas de facturas al mes y quiere <strong style="color:var(--white)">automatizar el registro</strong> en Google Sheets — concepto, fecha, valor, proveedor y soporte — sin hacerlo manualmente fila a fila.</p>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--dim);border-radius:6px;padding:22px 26px;flex:1">
+            <p style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">📋 Estructura del prompt</p>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Rol: </span>Asistente de IA especialista en automatización administrativa y Google Workspace</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Contexto: </span>Necesito crear una Gema en Gemini que procese facturas adjuntas y las registre en Google Sheets con columnas: Fecha, Proveedor, Concepto, Valor, Moneda, Soporte</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Tarea: </span>Dame instrucciones completas para configurar la Gema, incluyendo el prompt de sistema y el flujo de trabajo paso a paso</div>
+              <div style="background:var(--bg-raised);border-left:3px solid var(--orange);border-radius:3px;padding:10px 14px;font-size:19px;color:var(--off);line-height:1.5"><span style="color:var(--orange);font-weight:700">Formato: </span>Guía paso a paso: 1) config. de la Gema, 2) prompt listo para pegar, 3) estructura de la hoja, 4) flujo de uso en 3 pasos</div>
+            </div>
+          </div>
+        </div>
+        <div class="practice-area" style="flex:1;min-height:0">
+          <div class="practice-label">✍️ Escribe tu prompt aquí</div>
+          <textarea class="practice-textarea" id="pt_c6" style="flex:1;min-height:0" placeholder="Eres un asistente de IA especialista en automatización y Google Workspace...&#10;&#10;Contexto: el área administrativa de DCI necesita una Gema en Gemini que procese facturas adjuntas y registre automáticamente en Google Sheets...&#10;&#10;Necesito que me expliques cómo configurar esta Gema...&#10;&#10;Formato: guía paso a paso con el prompt listo para pegar..."></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+            <button onclick="validatePromptGeneric('pt_c6','pvr_c6')" style="padding:12px 24px;background:var(--orange);border:none;border-radius:4px;color:#fff;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">⚡ Validar prompt</button>
+          </div>
+          <div id="pvr_c6" style="display:none;background:var(--bg-raised);border-radius:6px;padding:18px 20px;border:1px solid var(--dim)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE CLOSING ══ -->
     <div class="slide slide-closing" data-index="33">
       <div class="closing-content">
         <div style="font-size:64px;margin-bottom:32px">🚀</div>
@@ -2374,7 +2891,9 @@
   }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); next(); }
+    const tag = document.activeElement && document.activeElement.tagName;
+    const isInput = tag === 'TEXTAREA' || tag === 'INPUT';
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || (e.key === ' ' && !isInput)) { e.preventDefault(); next(); }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
   });
 
@@ -2455,6 +2974,40 @@ document.addEventListener('DOMContentLoaded', function() {
   var firstBtn = document.querySelector('.tc-btn');
   if (firstBtn) tcSelect(firstBtn, 0);
 });
+
+var _examplePromptText = "Eres un asesor comercial de DCI Ingenieros, empresa especializada en la construcción de redes eléctricas de media y baja tensión y en instalaciones eléctricas residenciales e industriales.\n\nContexto: Un cliente llamado Carlos Rodríguez nos escribió por WhatsApp preguntando cuánto cuesta y cuánto tiempo toma hacer la instalación eléctrica completa de su vivienda de 120 m².\n\nNecesito que hagas dos cosas:\n1. Redacta una respuesta cordial y profesional para WhatsApp, en máximo 3 líneas, que confirme que recibimos su consulta y que le indicamos que un asesor lo contactará en menos de 24 horas.\n2. Redacta un oficio formal de DCI Ingenieros dirigido al señor Carlos Rodríguez presentando nuestra empresa, nuestros servicios de instalación residencial y los siguientes pasos para solicitar una visita técnica y cotización.\n\nFormato del oficio: membrete con nombre de empresa, fecha, saludo formal, tres párrafos de cuerpo (presentación, servicios, llamado a la acción) y cierre con firma del asesor comercial. Tono profesional y cálido. Máximo 250 palabras en el oficio.";
+
+window._exampleActive = false;
+window._userText = '';
+
+function toggleExamplePrompt() {
+  var ta = document.getElementById('practiceTextarea');
+  var btn = document.getElementById('examplePromptBtn');
+  var panel = document.getElementById('promptValidatorResult');
+  if (!ta || !btn) return;
+
+  if (!window._exampleActive) {
+    // Activar: guardar texto del usuario y cargar ejemplo
+    window._userText = ta.value;
+    ta.value = _examplePromptText;
+    btn.textContent = '✕ Ocultar ejemplo';
+    btn.style.borderColor = 'var(--orange)';
+    btn.style.color = 'var(--orange)';
+    btn.onmouseout = null;
+    window._exampleActive = true;
+    // Auto-validar para mostrar el resultado excelente
+    validatePrompt();
+  } else {
+    // Desactivar: restaurar texto del usuario
+    ta.value = window._userText;
+    btn.textContent = '💡 Ver prompt ejemplo';
+    btn.style.borderColor = 'var(--dim)';
+    btn.style.color = 'var(--muted)';
+    btn.onmouseout = function(){ if(!window._exampleActive){ btn.style.borderColor='var(--dim)'; btn.style.color='var(--muted)'; } };
+    window._exampleActive = false;
+    if (panel) panel.style.display = 'none';
+  }
+}
 
 function validatePrompt() {
   var ta = document.getElementById('practiceTextarea');
@@ -2604,6 +3157,709 @@ function validatePrompt() {
     + '<p style="font-size:14px;color:var(--muted);line-height:1.5">' + desc + '</p>'
     + tipsHtml
     + xmlHintHtml;
+}
+
+function loadDocumentoC3(btn) {
+  var ta = document.getElementById('pt_c3');
+  var pvr = document.getElementById('pvr_c3');
+  if (!ta) return;
+
+  var docText = [
+    'Eres un especialista en propuestas comerciales para proyectos eléctricos industriales de DCI Ingenieros, empresa experta en redes eléctricas de media y baja tensión e instalaciones industriales.',
+    '',
+    'A continuación el documento de requerimientos técnicos enviado por el cliente:',
+    '',
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+    '📄 Requerimientos_Red_Electrica_IPV-2026-041.pdf',
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+    '',
+    'REQUERIMIENTOS TÉCNICOS — Red Eléctrica · Nueva Planta de Producción',
+    'Ref: IPV-2026-041  |  CONFIDENCIAL',
+    '',
+    '1. INFORMACIÓN GENERAL',
+    'Cliente:           Industrias Procesadora del Valle S.A.S.',
+    'NIT:               900.123.456-7',
+    'Contacto:          Ing. Ricardo Muñoz Vargas — Gerente de Planta',
+    'Dirección:         Km 3 Vía al Norte, Zona Industrial, Cali, Valle del Cauca',
+    'Fecha solicitud:   10 de junio de 2026',
+    'Inicio estimado:   1 de agosto de 2026',
+    '',
+    '2. DESCRIPCIÓN DEL PROYECTO',
+    'Instalación eléctrica completa para nueva planta de producción de alimentos con área',
+    'construida de 2.400 m². Operación en dos turnos (16 h/día). Requiere continuidad de',
+    'servicio en procesos críticos de refrigeración y líneas de producción.',
+    '',
+    '3. REQUERIMIENTOS DE POTENCIA Y SUMINISTRO',
+    '• Carga total instalada:         380 kW',
+    '• Factor de demanda estimado:    0.75',
+    '• Demanda máxima calculada:      285 kW',
+    '• Tensión de suministro:         13.2 kV (red de media tensión)',
+    '• Tensión distribución interna:  440 / 220 V trifásico, 60 Hz',
+    '• Factor de potencia objetivo:   ≥ 0.95 (banco de condensadores incluido)',
+    '',
+    '4. ALCANCE DE LA INSTALACIÓN',
+    '',
+    '4.1 Acometida y Subestación',
+    '• Transformador 400 kVA, 13.2 kV / 440-220 V, Dyn11',
+    '• Celda de medida según especificaciones del operador de red',
+    '• Tablero de Distribución Principal (TDP), interruptor principal 800 A',
+    '• Sistema de puesta a tierra: malla equipotencial, resistencia ≤ 5 Ω',
+    '• Protección contra sobretensiones (SPD Tipo I + II en TDP)',
+    '',
+    '4.2 Distribución Interna',
+    '• 6 tableros secundarios de distribución (TS1 a TS6)',
+    '• Circuitos ramales para motores trifásicos 440 V',
+    '• Circuitos monofásicos para iluminación y tomas generales',
+    '• Canalización en conduit EMT (áreas secas) / IMC (áreas húmedas)',
+    '• Bandejas portacables en áreas técnicas y sobre maquinaria',
+    '',
+    '4.3 Cargas Especiales',
+    '• Compresor de refrigeración #1:   75 HP / 440 V trifásico (arranque suave)',
+    '• Compresor de refrigeración #2:   75 HP / 440 V trifásico (redundancia crítica)',
+    '• Línea de producción A:           45 kW / 440 V trifásico (variador de frecuencia)',
+    '• Línea de producción B:           45 kW / 440 V trifásico (variador de frecuencia)',
+    '• Planta de tratamiento de agua:   15 kW / 440 V trifásico',
+    '• UPS control, PLCs y SCADA:       20 kVA / 220 V (autonomía mín. 30 min)',
+    '• Iluminación total:               18 kW / 220 V (LED industrial IP65)',
+    '• Tomas generales y auxiliares:    12 kW / 120-220 V',
+    '',
+    '5. REQUERIMIENTOS DE ILUMINACIÓN',
+    '• Área de producción:    500 lux mínimo (uniformidad ≥ 0.7)',
+    '• Bodegas:               300 lux',
+    '• Oficinas:              400 lux',
+    '• Vestieres y baños:     200 lux',
+    '• Zonas cargue exterior: 100 lux',
+    '• Iluminación de emergencia en todas las vías de evacuación (NTC 2050 Art. 700)',
+    '',
+    '6. NORMAS Y ESTÁNDARES APLICABLES',
+    '• RETIE — Res. 9-0708/2013 y modificaciones',
+    '• NTC 2050 — Código Eléctrico Colombiano',
+    '• NTC 4552 — Protección contra el rayo',
+    '• IEEE Std 242 — Protección de sistemas industriales',
+    '• Especificaciones técnicas del operador de red local',
+    '',
+    '7. ENTREGABLES REQUERIDOS',
+    'a) Diseño eléctrico: memorias de cálculo, diagramas unifilares, planos de montaje',
+    'b) Propuesta económica itemizada (materiales, mano de obra, equipos, indirectos)',
+    'c) Cronograma de actividades (diagrama de Gantt)',
+    'd) Declaración de conformidad RETIE — Ingeniero con tarjeta COPNIA',
+    'e) Pólizas: responsabilidad civil extracontractual y todo riesgo construcción',
+    '',
+    '8. CONDICIONES GENERALES',
+    'El contratista suministra materiales, equipos y mano de obra. Marcas aceptadas:',
+    'Schneider Electric, ABB, Siemens o equivalente aprobado por el cliente.',
+    'Garantía mínima: 12 meses desde certificación RETIE.',
+    'Ejecución sin interrumpir operación de la planta adyacente existente.',
+    'Plazo propuesta: 10 días hábiles. Ejecución total: 90 días calendario.',
+    '',
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+    '',
+    'Con base en este documento, necesito que generes una propuesta comercial completa que incluya: alcance del proyecto, solución técnica propuesta, tabla de entregables con responsable y plazo, cronograma estimado de ejecución y condiciones comerciales generales.',
+    '',
+    'Formato: documento estructurado con secciones numeradas, tabla de entregables y resumen ejecutivo al inicio. Máximo 600 palabras. Tono profesional y técnico.',
+  ].join('\n');
+
+  // Animación de carga
+  btn._loaded = true;
+  btn.innerHTML = '<span>⏳</span> Cargando...';
+  btn.style.borderColor = 'var(--orange)';
+  btn.style.color = 'var(--orange)';
+  btn.disabled = true;
+
+  setTimeout(function() {
+    ta.value = docText;
+    ta.style.transition = 'background 0.4s';
+    ta.style.background = 'rgba(90,158,114,0.07)';
+    setTimeout(function(){ ta.style.background = ''; }, 800);
+
+    btn.innerHTML = '<span>✓</span> Documento cargado';
+    btn.style.borderColor = '#5A9E72';
+    btn.style.color = '#5A9E72';
+    btn.disabled = false;
+
+    ta.focus();
+  }, 700);
+}
+
+function downloadPortafolioDCI(btn) {
+  if (typeof window.jspdf === 'undefined') {
+    btn.textContent = '⚠ Cargando librería...';
+    setTimeout(function(){ btn.innerHTML = '<span>⬇</span> Descargar portafolio_DCI.pdf'; }, 2000);
+    return;
+  }
+  var doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4' });
+  var W = 210; var M = 18; var CW = W - M * 2;
+  var y = 0;
+
+  function line(h) { y += h || 5; }
+  function hline(color) {
+    doc.setDrawColor(color || 200, color ? color : 84, color ? color : 40);
+    doc.setLineWidth(0.3); doc.line(M, y, W - M, y); line(4);
+  }
+  function sectionTitle(txt) {
+    line(1);
+    doc.setFillColor(30, 30, 30); doc.rect(M, y - 3.5, CW, 7.5, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#C85428');
+    doc.text(txt, M + 3, y + 0.5); line(6);
+  }
+  function body(txt, indent) {
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor('#2E2E2E');
+    var x = M + (indent || 0);
+    doc.splitTextToSize(txt, CW - (indent || 0)).forEach(function(l){ doc.text(l, x, y); line(4.5); });
+  }
+  function bullet(txt) { body('•  ' + txt, 5); }
+  function colBullet(items, col1W) {
+    // Two-column bullets
+    var half = Math.ceil(items.length / 2);
+    var left = items.slice(0, half); var right = items.slice(half);
+    var maxRows = Math.max(left.length, right.length);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor('#2E2E2E');
+    for (var i = 0; i < maxRows; i++) {
+      if (left[i])  doc.text('•  ' + left[i],  M + 5, y);
+      if (right[i]) doc.text('•  ' + right[i], M + 5 + (col1W || 85), y);
+      line(4.5);
+    }
+  }
+
+  // ── HEADER ──
+  doc.setFillColor(14, 14, 14); doc.rect(0, 0, W, 32, 'F');
+  // Logo placeholder — orange rectangle
+  doc.setFillColor(200, 84, 40); doc.rect(M, 8, 22, 16, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor('#FFFFFF');
+  doc.text('DCI', M + 3.5, 18.5);
+  // Company name
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor('#F2EDE7');
+  doc.text('DCI INGENIEROS', M + 26, 14);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor('#C8C0B4');
+  doc.text('Soluciones en Ingeniería Eléctrica y Telecomunicaciones', M + 26, 21);
+  // Tag line right
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor('#C85428');
+  doc.text('+15 años de experiencia', W - M, 14, { align: 'right' });
+  doc.setFont('helvetica', 'normal'); doc.setTextColor('#C8C0B4'); doc.setFontSize(8);
+  doc.text('Bogotá · Medellín · Cali · Eje Cafetero', W - M, 21, { align: 'right' });
+  y = 40;
+
+  // ── QUIÉNES SOMOS ──
+  sectionTitle('QUIÉNES SOMOS');
+  body('DCI Ingenieros es una empresa colombiana con más de 15 años de trayectoria en el diseño, construcción y mantenimiento de infraestructura eléctrica y de telecomunicaciones. Atendemos los sectores residencial, comercial e industrial con equipos especializados, cumplimiento RETIE y entrega de documentación técnica completa.');
+  line(1);
+
+  // ── PORTAFOLIO — 2 columnas ──
+  sectionTitle('PORTAFOLIO DE SERVICIOS');
+
+  // Col headers
+  var c1x = M + 3; var c2x = M + 3 + 87;
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#C85428');
+  doc.text('LÍNEAS DE NEGOCIO', c1x, y); doc.text('SERVICIOS DESTACADOS', c2x, y); line(5.5);
+
+  var lineaNegocios = [
+    ['Redes Eléctricas de Media Tensión', 'Subestaciones tipo interior y exterior (11–34.5 kV)'],
+    ['', 'Líneas aéreas y subterráneas de distribución MT'],
+    ['', 'Redes MT para zonas industriales y urbanizaciones'],
+    ['', ''],
+    ['Instalaciones Eléctricas Industriales', 'Tableros de distribución principal y secundarios'],
+    ['', 'Variadores de frecuencia y arrancadores suaves'],
+    ['', 'Sistemas UPS, plantas de emergencia y transferencia'],
+    ['', 'Puesta a tierra e iluminación industrial LED'],
+    ['', ''],
+    ['Instalaciones Residenciales y Comerciales', 'Viviendas unifamiliares, conjuntos y edificios'],
+    ['', 'Centros comerciales, oficinas y consultorios'],
+    ['', 'Diseño, certificación RETIE y adecuaciones'],
+    ['', ''],
+    ['Telecomunicaciones e Infraestructura TI', 'Cableado estructurado Cat 6A y fibra óptica'],
+    ['', 'Redes de datos, CCTV y control de acceso'],
+    ['', ''],
+    ['Consultoría y Estudios Técnicos', 'Estudio de cortocircuito y coordinación de protecciones'],
+    ['', 'Auditorías eléctricas y diagnóstico RETIE'],
+    ['', 'Consultoría en eficiencia energética'],
+  ];
+
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(8.8); doc.setTextColor('#2E2E2E');
+  lineaNegocios.forEach(function(row) {
+    if (row[0] === '' && row[1] === '') { line(1); return; }
+    if (row[0]) {
+      doc.setFont('helvetica', 'bold'); doc.setTextColor('#1A1A1A');
+      doc.text(row[0], c1x, y);
+    }
+    if (row[1]) {
+      doc.setFont('helvetica', 'normal'); doc.setTextColor('#2E2E2E');
+      doc.text('·  ' + row[1], c2x, y);
+    }
+    line(4.6);
+  });
+  line(1);
+
+  // ── SECTORES ──
+  sectionTitle('SECTORES QUE ATENDEMOS');
+  colBullet([
+    'Manufactura e industria pesada',
+    'Construcción residencial y urbanizadores',
+    'Sector salud (clínicas y hospitales)',
+    'Educación (colegios y universidades)',
+    'Centros comerciales y retail',
+    'Agroindustria y sector alimentario',
+  ], 87);
+  line(1);
+
+  // ── CERTIFICACIONES ──
+  sectionTitle('CERTIFICACIONES Y ESTÁNDARES');
+  colBullet([
+    'RETIE — Res. 9-0708/2013',
+    'NTC 2050 — Código Eléctrico Colombiano',
+    'Profesionales con matrícula COPNIA vigente',
+    'ISO 9001:2015 — Gestión de Calidad',
+  ], 87);
+  line(1);
+
+  // ── DIFERENCIADORES ──
+  sectionTitle('NUESTROS DIFERENCIADORES');
+  colBullet([
+    'Ingenieros especializados con +10 años de exp.',
+    'Respuesta en < 24 h para visitas técnicas',
+    'Garantía 12 meses en materiales y mano de obra',
+    'Gestión integral: diseño, suministro y certificación',
+    'Documentación técnica completa en cada proyecto',
+    'Cumplimiento normativo sin sobrecostos ocultos',
+  ], 87);
+  line(2);
+
+  // ── FOOTER CONTACTO ──
+  doc.setFillColor(14, 14, 14); doc.rect(0, y - 2, W, 30, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#C85428');
+  doc.text('CONTÁCTENOS', M, y + 4); line(7);
+  var contacts = [
+    ['📍 Dirección', 'Carrera 15 # 82-45, Oficina 302, Bogotá D.C.'],
+    ['📞 Teléfono',  '+57 (1) 742-8800'],
+    ['💬 WhatsApp',  '+57 310 850-9900'],
+    ['✉ Email',     'comercial@dciingenieros.com.co'],
+    ['🌐 Web',       'www.dciingenieros.com.co'],
+  ];
+  var cy = y;
+  contacts.forEach(function(c, i) {
+    var col = i < 3 ? 0 : 1;
+    var cx = col === 0 ? M : M + 87;
+    if (i === 3) cy = y - (4.5 * 3);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor('#C8C0B4');
+    doc.text(c[0] + ':', cx, cy);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor('#F2EDE7');
+    doc.text(c[1], cx + 22, cy);
+    if (col === 0) cy += 4.5;
+  });
+
+  doc.save('Portafolio_DCI_Ingenieros.pdf');
+
+  btn.innerHTML = '✓ Descargado';
+  btn.style.borderColor = '#5A9E72';
+  btn.style.color = '#5A9E72';
+  setTimeout(function(){
+    btn.innerHTML = '<span>⬇</span> Descargar portafolio_DCI.pdf';
+    btn.style.borderColor = 'var(--orange)';
+    btn.style.color = 'var(--orange)';
+  }, 3000);
+}
+
+function downloadSubestacionPDF(btn) {
+  if (typeof window.jspdf === 'undefined') {
+    btn.textContent = '⚠ Cargando librería...';
+    setTimeout(function(){ btn.innerHTML = '<span>⬇</span> Descargar requerimientos_subestacion.pdf'; }, 2000);
+    return;
+  }
+  var doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4' });
+  var W = 210; var M = 20; var CW = W - M * 2;
+  var y = 0;
+
+  function line(h) { y += h || 5; }
+  function hline() {
+    doc.setDrawColor(200, 84, 40); doc.setLineWidth(0.35);
+    doc.line(M, y, W - M, y); line(5);
+  }
+  function section(num, txt) {
+    line(3);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor('#C85428');
+    doc.text(num + '.  ' + txt, M, y); line(5.5);
+  }
+  function body(txt) {
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor('#2E2E2E');
+    doc.splitTextToSize(txt, CW).forEach(function(l){ doc.text(l, M, y); line(4.8); });
+  }
+  function bullet(txt) {
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor('#2E2E2E');
+    doc.splitTextToSize(txt, CW - 6).forEach(function(l){ doc.text(l, M + 6, y); line(4.8); });
+  }
+  function kv(label, val) {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor('#1A1A1A');
+    doc.text(label + ':', M, y);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor('#2E2E2E');
+    doc.text(val, M + 40, y); line(5);
+  }
+
+  // ── HEADER ──
+  doc.setFillColor(14, 14, 14); doc.rect(0, 0, W, 28, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor('#F2EDE7');
+  doc.text('REQUERIMIENTOS TÉCNICOS — SUBESTACIÓN', M, 12);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor('#C8C0B4');
+  doc.text('Media Tensión · Planta Industrial · Ref: MET-2026-017', M, 20);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#C85428');
+  doc.text('CONFIDENCIAL', W - M, 12, { align: 'right' });
+  doc.setFont('helvetica', 'normal'); doc.setTextColor('#C8C0B4');
+  doc.text('Junio 2026', W - M, 20, { align: 'right' });
+  y = 36;
+
+  // ── S1 ──
+  section('1', 'INFORMACIÓN DEL PROYECTO');
+  kv('Cliente',       'Metalmecánica Industrial del Pacífico S.A.S.');
+  kv('Contacto',      'Ing. Camila Torres — Directora de Infraestructura');
+  kv('Ubicación',     'Zona Franca Pacífico, Buenaventura, Valle del Cauca');
+  kv('Referencia',    'MET-2026-017');
+  kv('Fecha',         '5 de junio de 2026');
+  hline();
+
+  // ── S2 ──
+  section('2', 'DESCRIPCIÓN Y ALCANCE');
+  body('Diseño y construcción de una subestación eléctrica de media tensión tipo interior (prefabricada o convencional) para alimentar la nueva nave de producción de 3.800 m² con carga instalada de 650 kW. La subestación debe ser operada en modo radial con posibilidad de transferencia manual a una fuente alterna.');
+  hline();
+
+  // ── S3 ──
+  section('3', 'PARÁMETROS ELÉCTRICOS DE DISEÑO');
+  var params = [
+    ['Tensión de suministro (entrada)',  '34.5 kV  (línea de media tensión — EPSA)'],
+    ['Tensión de distribución (salida)', '13.2 kV / 440-220 V trifásico, 60 Hz'],
+    ['Potencia del transformador',       '800 kVA  (factor utilización máx. 80 %)'],
+    ['Conexión del transformador',       'Dyn11  (delta en primario, estrella aterrada en secundario)'],
+    ['Nivel de cortocircuito en barra',  '25 kA / 1 seg (según estudio de red del operador)'],
+    ['Factor de potencia objetivo',      '≥ 0.95  (corrección con banco de condensadores automático)'],
+    ['Demanda máxima calculada',         '520 kW  (FD = 0.80)'],
+  ];
+  params.forEach(function(r){
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor('#1A1A1A');
+    doc.text(r[0] + ':', M + 6, y);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor('#2E2E2E');
+    doc.text(r[1], M + 80, y); line(5);
+  });
+  hline();
+
+  // ── S4 ──
+  section('4', 'REQUERIMIENTOS DE EQUIPOS PRINCIPALES');
+  var equipos = [
+    '• Transformador de potencia:  800 kVA, 34.5 kV / 13.2 kV, ONAN, pérdidas reducidas (Tier 2)',
+    '• Celda de llegada (MT):      Interruptor automático de vacío 34.5 kV, 630 A, poder de corte 25 kA',
+    '• Celda de medida:            Transformadores de corriente y tensión para facturación (clase 0.5)',
+    '• Celda de protección:        Relé de protección diferencial (87T) + sobrecorriente (51/50)',
+    '• Tablero BT principal:       ACB 1.600 A, barras de cobre 1.600 A, compartimentado IP42',
+    '• Banco de condensadores:     200 kVAr automático, 6 escalones, regulador inteligente',
+    '• Planta de emergencia:       400 kVA / 440 V, arranque automático (ATS), reserva 72 h',
+    '• Sistema de puesta a tierra: Malla equipotencial, resistencia ≤ 1 Ω, conductor 4/0 AWG Cu',
+    '• Protección contra rayos:    Pararrayos de óxido metálico 36 kV en terminales del transformador',
+  ];
+  equipos.forEach(function(e){ bullet(e); });
+  hline();
+
+  // ── S5 ──
+  section('5', 'REQUERIMIENTOS DE ESPACIO Y OBRA CIVIL');
+  bullet('• Área destinada para la subestación: 8 m × 6 m (48 m²), acceso por vía pavimentada');
+  bullet('• Altura libre mínima interior: 4.5 m');
+  bullet('• Piso de concreto reforzado (resistencia ≥ 210 kg/cm²), acabado epóxico antiestático');
+  bullet('• Canaletas para cables de MT y BT separadas con tabique cortafuego');
+  bullet('• Sistema de ventilación forzada para control térmico (temperatura máx. interior 40 °C)');
+  bullet('• Puerta de acceso metálica con cerradura de seguridad y señalización RETIE');
+  line(2);
+
+  // ── S6 ──
+  section('6', 'NORMAS APLICABLES');
+  bullet('• RETIE — Reglamento Técnico de Instalaciones Eléctricas (Res. 9-0708/2013)');
+  bullet('• NTC 2050 — Código Eléctrico Colombiano');
+  bullet('• IEC 62271-200 — Subestaciones de MT prefabricadas');
+  bullet('• IEC 60076 — Transformadores de potencia');
+  bullet('• IEEE C57.12 — Especificaciones de transformadores de distribución');
+  line(2);
+
+  // ── S7 ──
+  section('7', 'ENTREGABLES Y CONDICIONES');
+  body('El contratista debe entregar: memoria de cálculo, diagrama unifilar, planos de montaje, estudio de cortocircuito y coordinación de protecciones, cronograma de ejecución (plazo máx. 75 días calendario) y declaración de conformidad RETIE firmada por profesional con matrícula COPNIA vigente. Los materiales deben ser de primera línea (ABB, Schneider, Siemens o equivalente aprobado). Garantía mínima: 18 meses desde la puesta en servicio certificada.');
+
+  // ── FOOTER ──
+  hline();
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#1A1A1A');
+  doc.text('Contacto:', M, y);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Ing. Camila Torres  ·  +57 (2) 731-8800  ·  ctorres@metalpacifco.com', M + 22, y);
+
+  doc.save('Requerimientos_Subestacion_MET-2026-017.pdf');
+
+  btn.innerHTML = '✓ Descargado';
+  btn.style.borderColor = '#5A9E72';
+  btn.style.color = '#5A9E72';
+  setTimeout(function(){
+    btn.innerHTML = '<span>⬇</span> Descargar requerimientos_subestacion.pdf';
+    btn.style.borderColor = 'var(--orange)';
+    btn.style.color = 'var(--orange)';
+  }, 3000);
+}
+
+function downloadRequerimientosPDF(btn) {
+  if (typeof window.jspdf === 'undefined') {
+    btn.textContent = '⚠ Cargando librería...';
+    setTimeout(function(){ btn.innerHTML = '<span>⬇</span> Descargar requerimientos.pdf'; }, 2000);
+    return;
+  }
+  var doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4' });
+  var W = 210; var M = 20; var CW = W - M * 2;
+  var y = 0;
+
+  function line(height) { y += height || 5; }
+  function hline() {
+    doc.setDrawColor(200, 84, 40); doc.setLineWidth(0.4);
+    doc.line(M, y, W - M, y); line(5);
+  }
+  function title(txt, size, color) {
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(size || 11);
+    doc.setTextColor(color || '#1A1A1A');
+    doc.text(txt, M, y); line(size ? size * 0.45 : 5);
+  }
+  function body(txt, size) {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(size || 9.5);
+    doc.setTextColor('#2E2E2E');
+    var lines = doc.splitTextToSize(txt, CW);
+    lines.forEach(function(l) { doc.text(l, M, y); line(4.8); });
+  }
+  function bodyIndent(txt, size) {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(size || 9.5);
+    doc.setTextColor('#2E2E2E');
+    var lines = doc.splitTextToSize(txt, CW - 6);
+    lines.forEach(function(l) { doc.text(l, M + 6, y); line(4.8); });
+  }
+  function section(num, txt) {
+    line(3);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor('#C85428');
+    doc.text(num + '.  ' + txt, M, y); line(5.5);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor('#2E2E2E');
+  }
+
+  // ── HEADER ──
+  doc.setFillColor(14, 14, 14); doc.rect(0, 0, W, 28, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor('#F2EDE7');
+  doc.text('REQUERIMIENTOS TÉCNICOS', M, 13);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor('#C8C0B4');
+  doc.text('Red Eléctrica · Nueva Planta de Producción', M, 20);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#C85428');
+  doc.text('CONFIDENCIAL', W - M, 13, { align: 'right' });
+  doc.setFont('helvetica', 'normal'); doc.setTextColor('#C8C0B4');
+  doc.text('Ref: IPV-2026-041', W - M, 20, { align: 'right' });
+  y = 35;
+
+  // ── S1: INFO GENERAL ──
+  section('1', 'INFORMACIÓN GENERAL');
+  var info = [
+    ['Cliente', 'Industrias Procesadora del Valle S.A.S.'],
+    ['NIT', '900.123.456-7'],
+    ['Contacto técnico', 'Ing. Ricardo Muñoz Vargas — Gerente de Planta'],
+    ['Dirección', 'Km 3 Vía al Norte, Zona Industrial, Cali, Valle del Cauca'],
+    ['Fecha de solicitud', '10 de junio de 2026'],
+    ['Inicio estimado', '1 de agosto de 2026'],
+  ];
+  info.forEach(function(row) {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#1A1A1A');
+    doc.text(row[0] + ':', M, y);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor('#2E2E2E');
+    doc.text(row[1], M + 38, y); line(5);
+  });
+
+  hline();
+
+  // ── S2: DESCRIPCIÓN ──
+  section('2', 'DESCRIPCIÓN DEL PROYECTO');
+  body('Instalación eléctrica completa para nueva planta de producción de alimentos con área construida de 2.400 m².\nLa planta operará en dos turnos (16 h/día) y requiere continuidad de servicio en procesos críticos de\nrefrigeración y líneas de producción.');
+
+  // ── S3: REQUERIMIENTOS DE POTENCIA ──
+  section('3', 'REQUERIMIENTOS DE POTENCIA Y SUMINISTRO');
+  var potencia = [
+    '• Carga total instalada:       380 kW',
+    '• Factor de demanda estimado:  0.75',
+    '• Demanda máxima calculada:    285 kW',
+    '• Tensión de suministro:       13.2 kV  (red de media tensión — empresa prestadora local)',
+    '• Tensión distribución interna: 440 / 220 V trifásico, 60 Hz',
+    '• Factor de potencia objetivo:  ≥ 0.95 (corregido con banco de condensadores)',
+  ];
+  potencia.forEach(function(l){ bodyIndent(l); });
+
+  hline();
+
+  // ── S4: ALCANCE ──
+  section('4', 'ALCANCE DE LA INSTALACIÓN');
+  title('4.1  Acometida y Subestación', 9.5, '#333333'); line(-1);
+  var sub = [
+    '• Transformador de potencia: 400 kVA, 13.2 kV / 440-220 V, conexión Dyn11',
+    '• Celda de medida según especificaciones del operador de red',
+    '• Tablero de Distribución Principal (TDP) con interruptor principal de 800 A',
+    '• Sistema de puesta a tierra: malla equipotencial, resistencia ≤ 5 Ω',
+    '• Protección contra sobretensiones (SPD Tipo I + II en TDP)',
+  ];
+  sub.forEach(function(l){ bodyIndent(l); });
+  line(2);
+  title('4.2  Distribución Interna', 9.5, '#333333'); line(-1);
+  var dist = [
+    '• 6 tableros secundarios de distribución (TS1 a TS6) con protección termomagnética',
+    '• Circuitos ramales para equipos de producción (motores trifásicos 440 V)',
+    '• Circuitos monofásicos para iluminación, tomas generales y tomas especializadas',
+    '• Canalización en conduit EMT (áreas secas) y conduit IMC (áreas húmedas)',
+    '• Bandejas portacables en áreas técnicas y sobre maquinaria de producción',
+  ];
+  dist.forEach(function(l){ bodyIndent(l); });
+
+  // ── PAGE 2 ──
+  doc.addPage();
+  doc.setFillColor(14, 14, 14); doc.rect(0, 0, W, 12, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor('#C8C0B4');
+  doc.text('Industrias Procesadora del Valle S.A.S.  ·  Ref: IPV-2026-041  ·  Página 2 de 2', M, 8);
+  y = 22;
+
+  // ── S4.3: CARGAS ESPECIALES ──
+  title('4.3  Cargas Especiales Identificadas', 9.5, '#333333'); line(-1);
+  var headers = ['Equipo / Sistema', 'Potencia', 'Tensión', 'Obs.'];
+  var rows2 = [
+    ['Compresor de refrigeración #1', '75 HP (56 kW)', '440 V / 3ø', 'Arranque suave requerido'],
+    ['Compresor de refrigeración #2', '75 HP (56 kW)', '440 V / 3ø', 'Redundancia crítica'],
+    ['Línea de producción A', '45 kW', '440 V / 3ø', 'Variador de frecuencia'],
+    ['Línea de producción B', '45 kW', '440 V / 3ø', 'Variador de frecuencia'],
+    ['Planta de tratamiento de agua', '15 kW', '440 V / 3ø', '—'],
+    ['UPS (control, PLCs, SCADA)', '20 kVA', '220 V / 1ø', 'Autonomía mín. 30 min'],
+    ['Iluminación total', '18 kW', '220 V', 'LED industrial IP65'],
+    ['Tomas generales y auxiliares', '12 kW', '120/220 V', '—'],
+  ];
+  var colW = [65, 35, 32, CW - 65 - 35 - 32];
+  var colX = [M, M+65, M+100, M+132];
+  doc.setFillColor(30, 30, 30); doc.rect(M, y - 4, CW, 7, 'F');
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor('#C85428');
+  headers.forEach(function(h, i){ doc.text(h, colX[i] + 1, y); });
+  line(5);
+  rows2.forEach(function(row, ri) {
+    if (ri % 2 === 0) { doc.setFillColor(245, 245, 245); doc.rect(M, y - 3.5, CW, 6, 'F'); }
+    doc.setFont('helvetica', ri === 0 || ri === 1 ? 'bold' : 'normal');
+    doc.setFontSize(8.5); doc.setTextColor('#1A1A1A');
+    row.forEach(function(cell, i){ doc.text(cell, colX[i] + 1, y); });
+    line(6);
+  });
+
+  hline();
+
+  // ── S5: ILUMINACIÓN ──
+  section('5', 'REQUERIMIENTOS DE ILUMINACIÓN');
+  var lux = [
+    '• Área de producción y procesamiento: mínimo 500 lux (uniformidad ≥ 0.7)',
+    '• Bodegas de materia prima y producto terminado: 300 lux',
+    '• Oficinas administrativas y sala de reuniones: 400 lux',
+    '• Vestieres, baños y zonas de descanso: 200 lux',
+    '• Zonas de cargue/descargue (exterior): 100 lux',
+    '• Iluminación de emergencia obligatoria en todas las vías de evacuación (NTC 2050 Art. 700)',
+  ];
+  lux.forEach(function(l){ bodyIndent(l); });
+
+  // ── S6: NORMAS ──
+  section('6', 'NORMAS Y ESTÁNDARES APLICABLES');
+  var normas = [
+    '• RETIE — Reglamento Técnico de Instalaciones Eléctricas (Res. 9-0708/2013 y modificaciones)',
+    '• NTC 2050 — Código Eléctrico Colombiano (equivalente NEC)',
+    '• NTC 4552 — Protección de estructuras contra el rayo (NFPA 780)',
+    '• IEEE Std 242 — Protección y coordinación de sistemas eléctricos industriales',
+    '• Especificaciones técnicas del Operador de Red local (EPSA / EMCALI según aplique)',
+  ];
+  normas.forEach(function(l){ bodyIndent(l); });
+
+  // ── S7: ENTREGABLES ──
+  section('7', 'ENTREGABLES REQUERIDOS AL CONTRATISTA');
+  var entregables = [
+    'a)  Diseño eléctrico detallado: memorias de cálculo, diagramas unifilares, planos de planta y montaje',
+    'b)  Propuesta económica itemizada (materiales, mano de obra, equipos y costos indirectos)',
+    'c)  Plan de trabajo con cronograma de actividades (diagrama de Gantt)',
+    'd)  Declaración de conformidad RETIE firmada por Ingeniero responsable con tarjeta COPNIA',
+    'e)  Pólizas de seguro: responsabilidad civil extracontractual y todo riesgo construcción',
+  ];
+  entregables.forEach(function(l){ bodyIndent(l); });
+
+  // ── S8: CONDICIONES ──
+  section('8', 'CONDICIONES GENERALES');
+  body('El contratista suministra materiales, equipos y mano de obra. Los materiales deben ser de primera\ncalidad y marcas reconocidas (Schneider Electric, ABB, Siemens o equivalente técnicamente aprobado\npor el cliente). Garantía mínima de 12 meses sobre materiales y mano de obra a partir de la\ncertificación RETIE. La ejecución no debe interrumpir la operación de la planta adyacente existente.');
+  line(2);
+  body('Plazo para presentación de propuesta: máximo 10 días hábiles desde la recepción de este documento.\nPlazo de ejecución total: 90 días calendario. Inspección y certificación RETIE incluida en el alcance.');
+
+  // ── FOOTER ──
+  hline();
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor('#1A1A1A');
+  doc.text('Contacto para aclaraciones técnicas:', M, y); line(5);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+  doc.text('Ing. Ricardo Muñoz Vargas  ·  Gerente de Planta  ·  +57 (2) 850-1234  ·  rmunoz@ipvsas.com', M, y); line(4.5);
+  doc.text('Horario de atención: lunes a viernes, 8:00 a.m. – 5:00 p.m.', M, y);
+
+  doc.save('Requerimientos_Red_Electrica_IPV-2026-041.pdf');
+
+  // Feedback en el botón
+  btn.innerHTML = '✓ Descargado';
+  btn.style.borderColor = '#5A9E72';
+  btn.style.color = '#5A9E72';
+  setTimeout(function(){
+    btn.innerHTML = '<span>⬇</span> Descargar requerimientos.pdf';
+    btn.style.borderColor = 'var(--orange)';
+    btn.style.color = 'var(--orange)';
+  }, 3000);
+}
+
+function validatePromptGeneric(taId, resultId) {
+  var ta = document.getElementById(taId);
+  var panel = document.getElementById(resultId);
+  if (!ta || !panel) return;
+  var text = ta.value.trim();
+  if (!text) {
+    panel.style.display = 'block';
+    panel.innerHTML = '<p style="font-size:15px;color:var(--muted)">Escribe algo primero para poder validarlo.</p>';
+    return;
+  }
+  var lower = text.toLowerCase();
+  var score = 0;
+  var tips = [];
+  var hasRol = /\b(eres|actúa|actua|comporta|asume el rol|tú eres|tu eres|como un|como una|especialista|experto|asistente|redactor|analista|ingeniero|asesor|consultor|director)\b/.test(lower);
+  if (hasRol) { score += 25; } else { tips.push('Falta definir un <strong>rol</strong> — empieza con "Eres un [perfil específico]..."'); }
+  var hasContexto = /\b(contexto|situación|situacion|cliente|proyecto|empresa|equipo|contrato|instalación|instalacion|requerimiento|planta|factura|correo|solicitud)\b/.test(lower);
+  if (hasContexto) { score += 25; } else { tips.push('Falta el <strong>contexto</strong> — describe la situación, el cliente o el proyecto relevante'); }
+  var hasTarea = /\b(redacta|escribe|genera|crea|resume|elabora|prepara|analiza|diseña|proporciona|necesito|quiero que|te pido|explica|indica|dame)\b/.test(lower);
+  if (hasTarea) { score += 25; } else { tips.push('Falta una <strong>tarea clara</strong> — indica qué debe producir la IA (redacta, analiza, genera...)'); }
+  var hasFormato = /\b(formato|máximo|maximo|palabras|párrafos|parrafos|tono|profesional|estructura|bullets|lista|formal|secciones|tabla|paso a paso|guía|guia|negrita)\b/.test(lower);
+  if (hasFormato) { score += 25; } else { tips.push('Falta especificar el <strong>formato de salida</strong> — longitud, tono, estructura esperada'); }
+  var words = text.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+  if (words < 15 && score === 100) score = 75;
+  var nivel, color, icon, desc, isProfesional = false;
+  if (score <= 25) { nivel = 'Deficiente'; color = '#B84040'; icon = '✗'; desc = 'El prompt carece de los elementos básicos. La IA recibirá muy poca orientación.'; }
+  else if (score <= 50) { nivel = 'Aceptable'; color = '#C87828'; icon = '◐'; desc = 'El prompt tiene algún elemento útil pero le faltan componentes clave para obtener resultados precisos.'; }
+  else if (score <= 75) { nivel = 'Bueno'; color = '#8AAA50'; icon = '◑'; desc = 'Buen prompt. Con los ajustes sugeridos obtendrás respuestas más consistentes.'; }
+  else { nivel = 'Excelente'; color = '#5A9E72'; icon = '✓'; desc = 'Prompt completo. Tiene rol, contexto, tarea y formato. La IA podrá responder con precisión.'; }
+  var tipsHtml = '';
+  if (tips.length > 0) {
+    tipsHtml = '<div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.07);padding-top:12px">'
+      + '<p style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Oportunidades de mejora</p>'
+      + '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">'
+      + tips.map(function(t){ return '<li style="font-size:14px;color:var(--off);padding:8px 12px;background:rgba(200,84,40,0.07);border-left:2px solid var(--orange);border-radius:2px;line-height:1.45">→ ' + t + '</li>'; }).join('')
+      + '</ul></div>';
+  }
+  var scaleItems = ['Deficiente','Aceptable','Bueno','Excelente'];
+  var scaleColors = ['#B84040','#C87828','#8AAA50','#5A9E72'];
+  var scaleChips = scaleItems.map(function(n, i) {
+    var c = scaleColors[i]; var active = n === nivel;
+    return '<div style="font-size:10px;font-weight:600;padding:4px 8px;border-radius:3px;background:' + (active ? c : 'var(--bg-card)') + ';color:' + (active ? '#fff' : 'var(--muted)') + ';border:1px solid ' + (active ? c : 'var(--dim)') + ';letter-spacing:0.04em">' + n + '</div>';
+  }).join('');
+  panel.style.display = 'block';
+  panel.innerHTML =
+    '<div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:8px">'
+    + '<div style="width:40px;height:40px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0">' + icon + '</div>'
+    + '<div style="flex:1;min-width:0">'
+    + '<p style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Calidad del prompt</p>'
+    + '<p style="font-size:22px;font-weight:800;color:' + color + ';line-height:1.1">' + nivel + '</p>'
+    + '</div>'
+    + '<div style="flex-shrink:0;display:flex;flex-wrap:wrap;gap:4px;max-width:260px;justify-content:flex-end">' + scaleChips + '</div>'
+    + '</div>'
+    + '<p style="font-size:14px;color:var(--muted);line-height:1.5">' + desc + '</p>'
+    + tipsHtml;
 }
 
 function copyPromptTemplate() {
